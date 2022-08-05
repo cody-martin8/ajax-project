@@ -134,8 +134,40 @@ select {
   border-radius: 5px;
 }
 
-.return-button {
+.green-button {
+  border: none;
+  background-color: rgb(118, 184, 95);
+  color: white;
+  padding: 7px 13px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.orange-button {
+  border: none;
   background-color: rgb(212, 139, 54);
+  color: white;
+  padding: 7px 13px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.off-green-button {
+  border: none;
+  background-color: rgb(161,188,152);
+  color: white;
+  padding: 7px 13px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.margin-left {
+  margin-left: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -171,4 +203,8 @@ select {
 
   label {
     font-size: 24px;
+  }
+
+  .margin-left {
+    margin-left: 30px;
   }

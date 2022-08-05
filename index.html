@@ -23,7 +23,7 @@
   <main>
 
     <!-- Search page for search form -->
-    <div class="page" data-view="search-form">
+    <div class="page hidden" data-view="search-form">
       <form id="recipe-search-form">
         <div class="container tab" data-view="search-page">
           <div class="row page-header">
@@ -134,12 +134,26 @@
           </div>
           <div class="row-filter">
             <div class="column button-row">
-              <button type="button" class="save-filters-button">Save</button>
-              <button type="button" class="save-filters-button return-button ">Return</button>
+              <button type="button" class="save-filters-button green-button">Save</button>
+              <button type="button" class="save-filters-button orange-button ">Return</button>
             </div>
           </div>
         </div>
       </form>
+    </div>
+
+    <div class="page" data-view="recipe-book">
+      <div class="container tab" data-view="saved-recipes-page">
+        <div class="row page-header">
+          <div class="column">
+            <h1>Recipe Book</h1>
+            <div class="button-row align-right">
+              <button type="button" class="off-green-button">Search</button>
+              <button type="button" class="off-green-button margin-left">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
