@@ -11,8 +11,136 @@
 </head>
 <body>
   <header>
+    <div class="container-header">
+      <div class="row-header">
+        <div class="column-header">
+          <h2>My Recipe Book</h2>
+          <a href="#">Recipes</a>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+
+    <!-- Search page for search form -->
+    <div class="page" data-view="search-form">
+      <form id="recipe-search-form">
+        <div class="container tab" data-view="search-page">
+          <div class="row page-header">
+            <div class="column">
+              <h1>Search New Recipes</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column search-bar">
+              <input
+                required
+                name="queryText"
+                type="text"
+                class="query-text"
+                placeholder="Chicken, pasta, burgers, etc.">
+                <button class="search-button">Search</button>
+            </div>
+            <div class="filter-navigation">
+              <a href="#">Filter</a>
+            </div>
+          </div>
+
+          <!-- Empty list for search results -->
+          <div class="row">
+            <ul class="flex-wrap" id="search-result-list">
+            </ul>
+          </div>
+        </div>
+
+        <!-- Filter page for search form -->
+        <div class="container tab hidden" data-view="filter-page">
+          <div class="row page-header">
+            <div class="column button-row">
+              <h1>Filter</h1>
+              <button type="button" class="clear-filters">Clear Filters</button>
+            </div>
+          </div>
+          <div class="row-filter">
+            <div class="column-filter">
+              <label for="meal-type" class="block">Meal Type</label>
+              <select name="meal-type" id="meal-type" class="filter-dropdown">
+                <option value=""></option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snack">Snack</option>
+                <option value="teatime">Teatime</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-filter">
+            <div class="column-filter">
+              <label for="number-of-ingredients" class="block">Number of Ingredients</label>
+              <select name="number-of-ingredients" id="number-of-ingredients" class="filter-dropdown">
+                <option value=""></option>
+                <option value="1-3">1-3 Ingredients</option>
+                <option value="4-6">4-6 Ingredients</option>
+                <option value="7-10">7-10 Ingredients</option>
+                <option value="11%2B">11+ Ingredients</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-filter">
+            <div class="column-filter">
+              <label for="dish-type" class="block">Dish Type</label>
+              <select name="dish-type" id="dish-type" class="filter-dropdown">
+                <option value=""></option>
+                <option value="bread">Bread</option>
+                <option value="condiments and sauces">Condiments and Sauces</option>
+                <option value="biscuits and cookies">Cookies</option>
+                <option value="desserts">Desserts</option>
+                <option value="drinks">Drinks</option>
+                <option value="main course">Main Dish</option>
+                <option value="salad">Salad</option>
+                <option value="sandwiches">Sandwiches</option>
+                <option value="side dish">Side Dish</option>
+                <option value="soup">Soup</option>
+                <option value="starter">Starter</option>
+                <option value="sweets">Sweets</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-filter">
+            <div class="column-filter">
+              <label for="cuisine-type" class="block">Cuisine Type</label>
+              <select name="cuisine-type" id="cuisine-type" class="filter-dropdown">
+                <option value=""></option>
+                <option value="american">American</option>
+                <option value="asian">Asian</option>
+                <option value="british">British</option>
+                <option value="caribbean">Caribbean</option>
+                <option value="central-europe">Central Europe</option>
+                <option value="chinese">Chinese</option>
+                <option value="eastern-europe">Eastern Europe</option>
+                <option value="french">French</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+                <option value="kosher">Kosher</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="mexican">Mexican</option>
+                <option value="middle-eastern">Middle Eastern</option>
+                <option value="nordic">Nordic</option>
+                <option value="south-american">South American</option>
+                <option value="south-east-asian">South East Asian</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-filter">
+            <div class="column button-row">
+              <button type="button" class="save-filters-button">Save</button>
+              <button type="button" class="save-filters-button return-button ">Return</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

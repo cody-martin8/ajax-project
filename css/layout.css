@@ -1,0 +1,68 @@
+.hidden {
+  display: none !important;
+}
+
+body {
+  height: 100%;
+}
+
+.container,
+.row-header {
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.column-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.column {
+  display: flex;
+  justify-content: space-between;
+}
+
+.justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.block {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    height: 100vh;
+  }
+
+  .container,
+  .row-header {
+    max-width: 900px;
+  }
+
+  .search-bar {
+    justify-content: start;
+  }
+
+  .column-half {
+    width: 45%;
+  }
+
+  .flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .query-text {
+    margin-right: 25px;
+  }
+}
