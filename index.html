@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -15,7 +21,7 @@
       <div class="row-header">
         <div class="column-header">
           <h2>My Recipe Book</h2>
-          <a href="#">Recipes</a>
+          <a href="#" class="recipe-book-navigation">Recipes</a>
         </div>
       </div>
     </div>
@@ -142,16 +148,82 @@
       </form>
     </div>
 
+    <!-- Recipe Book page -->
     <div class="page" data-view="recipe-book">
       <div class="container tab" data-view="saved-recipes-page">
         <div class="row page-header">
           <div class="column">
             <h1>Recipe Book</h1>
             <div class="button-row align-right">
-              <button type="button" class="off-green-button">Search</button>
-              <button type="button" class="off-green-button margin-left">Create</button>
+              <button type="button" class="off-green-button search-navigation">Search</button>
+              <button type="button" class="off-green-button new-recipe-navigation margin-left">Create</button>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <ul class="flex-wrap" id="saved-recipes-list">
+            <li class="search-result-item" data-entry-id="#">
+              <div class="list-row">
+                <div class="list-column">
+                  <div class="search-result-image">
+                    <a href="#"><img alt="bruschetta" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
+                  </div>
+                  <div class="search-result-title column">
+                    <a href="#"><h2>Bruschetta</h2></a>
+                    <a href="#" class="options-icon"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="search-result-item" data-entry-id="#">
+              <div class="list-row">
+                <div class="list-column">
+                  <div class="search-result-image">
+                    <a href="#"><img alt="bruschetta"
+                        src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
+                  </div>
+                  <div class="search-result-title column">
+                    <a href="#">
+                      <h2>Bruschetta</h2>
+                    </a>
+                    <a href="#" class="options-icon"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="search-result-item" data-entry-id="#">
+              <div class="list-row">
+                <div class="list-column">
+                  <div class="search-result-image">
+                    <a href="#"><img alt="bruschetta"
+                        src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
+                  </div>
+                  <div class="search-result-title column">
+                    <a href="#">
+                      <h2>Bruschetta</h2>
+                    </a>
+                    <a href="#" class="options-icon"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="search-result-item" data-entry-id="#">
+              <div class="list-row">
+                <div class="list-column">
+                  <div class="search-result-image">
+                    <a href="#"><img alt="bruschetta"
+                        src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
+                  </div>
+                  <div class="search-result-title column">
+                    <a href="#">
+                      <h2>Bruschetta</h2>
+                    </a>
+                    <a href="#" class="options-icon"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

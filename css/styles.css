@@ -79,6 +79,7 @@ input:focus {
 }
 
 .search-result-title h2 {
+  display: inline-block;
   font-family: sans-serif;
   font-weight: medium;
   font-size: 28px;
@@ -159,6 +160,14 @@ select {
   padding: 7px 13px;
   font-size: 18px;
   border-radius: 5px;
+}
+
+.off-green-button:hover {
+  cursor: pointer;
+}
+
+.options-icon {
+  margin: 15px 15px 40px 0;
 }
 
 .align-right {

@@ -1,19 +1,48 @@
-// Changing view from Search Page to Filters Page
+// Navigation functions
+
+var $pages = document.querySelectorAll('.page');
+var $filterNav = document.querySelector('.filter-navigation a');
+var $searchNav = document.querySelector('.search-navigation');
+var $newRecipeNav = document.querySelector('.new-recipe-navigation');
+var $recipeBookNav = document.querySelector('.recipe-book-navigation')
+var $filterSave = document.querySelector('.save-filters-button.green-button');
+var $returnButton = document.querySelector('.save-filters-button.orange-button');
+
+// console.log($recipeBookNav);
+
+// PROGRESS NOTE; CREATE EVENT LISTENERS AND FUNCTIONS FOR NAV BUTTONS
+// CREATE, SEARCH, RECIPES BUTTONS
+// THEN CREATE NEW RECIPE PAGE
+
+$recipeBookNav.addEventListener('click', function () {
+  for (var i = 0; i < $pages.length; i++) {
+    if ($pages[i].dataset.view !== 'recipe-book') {
+      $pages[i].className = 'page hidden';
+    }
+    if ($pages[i].dataset.view === 'recipe-book') {
+      $pages[i].className = 'page';
+    }
+  }
+})
+
+$searchNav.addEventListener('click', function () {
+  for (var i = 0; i < $pages.length; i++) {
+    if ($pages[i].dataset.view !== 'search-form') {
+      $pages[i].className = 'page hidden';
+    }
+    if ($pages[i].dataset.view === 'search-form') {
+      $pages[i].className = 'page';
+    }
+  }
+})
+
+// Search page and Filter page functions
 
 var $searchPage = document.querySelectorAll('.tab');
-var $filter = document.querySelector('.filter-navigation a');
-var $filterSave = document.querySelector('.save-filters-button');
-var $filters = document.querySelectorAll('.filter-dropdown');
-var $returnButton = document.querySelector('.save-filters-button.return-button');
 var $clearFiltersButton = document.querySelector('.clear-filters');
+var $filters = document.querySelectorAll('.filter-dropdown');
 
-function clearFilters() {
-  for (var i = 0; i < $filters.length; i++) {
-    $filters[i].value = $filters[i][0];
-  }
-}
-
-$filter.addEventListener('click', function () {
+$filterNav.addEventListener('click', function () {
   $searchPage[0].className = 'container tab hidden';
   $searchPage[1].className = 'container tab';
 });
@@ -28,6 +57,12 @@ $returnButton.addEventListener('click', function () {
   $searchPage[1].className = 'container tab hidden';
   $searchPage[0].className = 'container tab';
 });
+
+function clearFilters() {
+  for (var i = 0; i < $filters.length; i++) {
+    $filters[i].value = $filters[i][0];
+  }
+}
 
 $clearFiltersButton.addEventListener('click', clearFilters);
 
