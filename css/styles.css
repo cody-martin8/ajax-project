@@ -21,14 +21,12 @@ body {
   color: white;
   font-size: 1.15rem;
   font-family: sans-serif;
-  font-weight: 300;
   margin-left: 45px;
   text-decoration: none;
 }
 
 .page-header h1 {
   font-family: sans-serif;
-  font-weight: medium;
   font-size: 28px;
 }
 
@@ -94,15 +92,50 @@ input:focus {
   color: black;
 }
 
-label {
-  font-size: 24px;
+button.clear-filters{
+  border: none;
+  text-decoration: underline;
   font-family: sans-serif;
+  font-weight: 300;
+  color: rgb(118, 184, 95);
+  font-size: 14px;
+}
+
+button.clear-filters:hover {
+  cursor: pointer;
+}
+
+label {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+select {
+  border: solid 1px rgb(194, 194, 194);
+  border-radius: 5px;
 }
 
 .filter-dropdown {
   font-size: 20px;
   width: 50%;
   margin: 10px 0 20px 0;
+}
+
+.button-row {
+  width: 50%;
+}
+
+.save-filters-button {
+  border: none;
+  background-color: rgb(118, 184, 95);
+  color: white;
+  padding: 7px 13px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.return-button {
+  background-color: rgb(212, 139, 54);
 }
 
 @media screen and (min-width: 768px) {
@@ -119,12 +152,9 @@ label {
   width: 45%;
   }
 
-  .filter-dropdown {
+  .filter-dropdown,
+  .button-row {
     width: 250px;
-  }
-
-  .search-bar {
-  margin: 15px 0;
   }
 
   .search-button {
@@ -137,4 +167,8 @@ label {
 
   .filter-navigation a {
     font-size: 18px;
+  }
+
+  label {
+    font-size: 24px;
   }

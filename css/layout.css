@@ -21,7 +21,6 @@ body {
 .column {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .justify-right {
