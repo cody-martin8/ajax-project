@@ -10,10 +10,6 @@ var $returnButton = document.querySelector('.save-filters-button.orange-button')
 
 // console.log($recipeBookNav);
 
-// PROGRESS NOTE; CREATE EVENT LISTENERS AND FUNCTIONS FOR NAV BUTTONS
-// CREATE, SEARCH, RECIPES BUTTONS
-// THEN CREATE NEW RECIPE PAGE
-
 $recipeBookNav.addEventListener('click', function () {
   for (var i = 0; i < $pages.length; i++) {
     if ($pages[i].dataset.view !== 'recipe-book') {

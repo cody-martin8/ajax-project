@@ -29,9 +29,9 @@
   <main>
 
     <!-- Search page for search form -->
-    <div class="page hidden" data-view="search-form">
+    <div class="page" data-view="search-form">
       <form id="recipe-search-form">
-        <div class="container tab" data-view="search-page">
+        <div class="container tab hidden" data-view="search-page">
           <div class="row page-header">
             <div class="column">
               <h1>Search New Recipes</h1>
@@ -145,13 +145,51 @@
             </div>
           </div>
         </div>
+
+        <!-- Viewing New Recipe page from Search page -->
+        <div class="container tab" data-view="new-recipe-page">
+          <div class="row page-header">
+            <div class="column">
+              <h1>New Recipe</h1>
+            </div>
+          </div>
+          <div class="new-recipe-wrapper">
+            <div class="row">
+              <div class="column">
+                <h1>Chicken Banh Mi</h1>
+              </div>
+              <div class="flex-wrap margin-bottom">
+                <img class="new-recipe-image" alt="chicken banh mi" src="https://littlespicejar.com/wp-content/uploads/2015/07/Vietnamese-Chicken-Sandwiches-with-Pickled-Vegetables-Banh-Mi-2-480x480.jpg">
+                <div class="ingredients-list margin-center">
+                  <ul class="padding-left margin-zero">
+                    <li class="ingredient"><p>1 French Baguette</p></li>
+                    <li class="ingredient"><p>4 large skinless, boneless chicken thighs</p></li>
+                    <li class="ingredient"><p>1 jalapeno pepper, thinly sliced</p></li>
+                    <li class="ingredient"><p>1 cup fresh cilantro</p></li>
+                    <li class="ingredient"><p>2 carrots, cut into matchsticks</p></li>
+                    <li class="ingredient"><p>1/2 small daikon radish, cut into matchsticks.</p></li>
+                    <li class="ingredient"><p>1/4 cup mayonnaise, preferably Japanese</p></li>
+                    <li class="ingredient"><p>3 tbsp soy sauce</p></li>
+                    <li class="ingredient"><p>3 tbsp fish sauce</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="recipe-link margin-bottom">
+                <a href="https://littlespicejar.com/vietnamese-chicken-sandwich-banh-mi/">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+              </div>
+              <div class="flex-center">
+                <button type="button" class="save-recipe-button green-button">Save Recipe</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
 
     <!-- Recipe Book page -->
-    <div class="page" data-view="recipe-book">
+    <div class="page hidden" data-view="recipe-book">
       <div class="container tab" data-view="saved-recipes-page">
-        <div class="row page-header">
+        <div class="row page-header margin-bottom">
           <div class="column">
             <h1>Recipe Book</h1>
             <div class="button-row align-right">
