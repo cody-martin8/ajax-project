@@ -42,6 +42,8 @@ var $searchList = document.querySelector('#search-result-list');
 
 function getRecipes(search) {
   var xhr = new XMLHttpRequest();
+  // var apiRequest = ;
+  // console.log(apiRequest);
   xhr.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&beta=false&q=' + search.queryText + '&app_id=25ee5a1c&app_key=2e0d886c58ffcac239ddf7ae29b2d302' + search.ingredientsNumber + search.cuisineType + search.mealType + search.dishType);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -63,23 +65,23 @@ $searchForm.addEventListener('submit', function searchRecipes(event) {
   }
   var search = {};
   search.queryText = $searchForm[0].value;
-  if ($searchForm[2].value !== '') {
-    search.mealType = '&mealType=' + $searchForm[2].value;
+  if ($searchForm[3].value !== '') {
+    search.mealType = '&mealType=' + $searchForm[3].value;
   } else {
     search.mealType = '';
   }
-  if ($searchForm[3].value !== '') {
-    search.ingredientsNumber = '&ingr=' + $searchForm[3].value;
+  if ($searchForm[4].value !== '') {
+    search.ingredientsNumber = '&ingr=' + $searchForm[4].value;
   } else {
     search.ingredientsNumber = '';
   }
-  if ($searchForm[4].value !== '') {
-    search.dishType = '&dishType=' + $searchForm[4].value;
+  if ($searchForm[5].value !== '') {
+    search.dishType = '&dishType=' + $searchForm[5].value;
   } else {
     search.dishType = '';
   }
-  if ($searchForm[5].value !== '') {
-    search.cuisineType = '&cuisineType=' + $searchForm[5].value;
+  if ($searchForm[6].value !== '') {
+    search.cuisineType = '&cuisineType=' + $searchForm[6].value;
   } else {
     search.cuisineType = '';
   }
