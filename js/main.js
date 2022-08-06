@@ -30,6 +30,9 @@ $searchNav.addEventListener('click', function () {
       $pages[i].className = 'page';
     }
   }
+  $searchPage[0].className = 'container tab';
+  $searchPage[1].className = 'container tab hidden';
+  $searchPage[2].className = 'container tab hidden';
 })
 
 // Search page and Filter page functions
@@ -67,9 +70,15 @@ $clearFiltersButton.addEventListener('click', clearFilters);
 var $queryText = document.querySelector('.query-text');
 var $searchButton = document.querySelector('.search-button');
 var $searchForm = document.getElementById('recipe-search-form');
-var $searchList = document.querySelector('#search-result-list');
+var $searchList = document.getElementById('search-result-list');
 
-// console.log($searchList);
+function pullSearchList () {
+  $searchListItems = $searchList.querySelectorAll('.search-result-item');
+  console.log($searchListItems);
+}
+
+var $searchListItems;
+var searchData = [];
 
 function getRecipes(search) {
   var xhr = new XMLHttpRequest();
@@ -85,15 +94,20 @@ function getRecipes(search) {
       $searchList.append(renderSearchResults(xhr.response.hits[i], searchId));
       searchId++;
     }
+    searchData.push(xhr.response.hits);
+    console.log(searchData);
   });
   xhr.send();
 }
+
+// Clicking the Search button on the Search page
 
 $searchForm.addEventListener('submit', function searchRecipes(event) {
   event.preventDefault();
   while ($searchList.firstChild) {
     $searchList.removeChild($searchList.firstChild);
   }
+  searchData = [];
   var search = {};
   search.queryText = $searchForm[0].value;
   if ($searchForm[3].value !== '') {
@@ -136,7 +150,6 @@ $searchForm.addEventListener('submit', function searchRecipes(event) {
 function renderSearchResults(response, searchId) {
   var listItem = document.createElement('li');
   listItem.className = 'search-result-item';
-  listItem.setAttribute('data-entry-id', searchId);
 
   var listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
@@ -161,6 +174,7 @@ function renderSearchResults(response, searchId) {
   var image = document.createElement('img');
   image.setAttribute('alt', response.recipe.label);
   image.setAttribute('src', response.recipe.image);
+  image.setAttribute('data-entry-id', searchId);
   imageLink.appendChild(image);
 
   var titleLink = document.createElement('a');
@@ -169,7 +183,44 @@ function renderSearchResults(response, searchId) {
 
   var title = document.createElement('h2');
   title.textContent = response.recipe.label;
+  title.setAttribute('data-entry-id', searchId);
   titleLink.appendChild(title);
 
   return listItem;
 }
+
+// Function for getting recipe data by clicking on a search item
+
+var $newRecipeHeading = document.querySelector('.new-recipe-wrapper h1');
+var $newRecipeImage = document.querySelector('.new-recipe-wrapper img');
+var $newRecipeLink = document.querySelector('.new-recipe-wrapper a');
+var $newRecipeIngredients = document.getElementById('new-recipe-ingredients-list');
+
+console.log();
+
+$searchList.addEventListener('click', function viewNewRecipe (event) {
+  while ($newRecipeIngredients.firstChild) {
+    $newRecipeIngredients.removeChild($newRecipeIngredients.firstChild);
+  }
+  var newRecipe;
+  for (var i = 0; i < searchData[0].length; i++) {
+    if (i.toString() === event.target.dataset.entryId) {
+      newRecipe = searchData[0][i];
+    }
+  }
+  $newRecipeHeading.textContent = newRecipe.recipe.label;
+  $newRecipeImage.alt = newRecipe.recipe.label;
+  $newRecipeImage.src = newRecipe.recipe.image;
+  $newRecipeLink.href = newRecipe.recipe.url;
+  for (var n = 0; n < newRecipe.recipe.ingredients.length; n++) {
+    var ingredient = document.createElement('li');
+    var ingredientText = document.createElement('p');
+    // console.log(newRecipe.recipe.ingredients[n]);
+    ingredientText.textContent = newRecipe.recipe.ingredients[n].text;
+    ingredient.appendChild(ingredientText);
+    ingredient.className = 'ingredient';
+    $newRecipeIngredients.appendChild(ingredient);
+  }
+  $searchPage[0].className = 'container tab hidden';
+  $searchPage[2].className = 'container tab';
+})
