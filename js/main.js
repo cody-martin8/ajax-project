@@ -8,8 +8,6 @@ var $recipeBookNav = document.querySelector('.recipe-book-navigation')
 var $filterSave = document.querySelector('.save-filters-button.green-button');
 var $returnButton = document.querySelector('.save-filters-button.orange-button');
 
-// console.log($recipeBookNav);
-
 $recipeBookNav.addEventListener('click', function () {
   for (var i = 0; i < $pages.length; i++) {
     if ($pages[i].dataset.view !== 'recipe-book') {
@@ -77,8 +75,6 @@ var searchData = [];
 
 function getRecipes(search) {
   var xhr = new XMLHttpRequest();
-  // var apiRequest = ;
-  // console.log(apiRequest);
   xhr.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&beta=false&q=' + search.queryText + '&app_id=25ee5a1c&app_key=2e0d886c58ffcac239ddf7ae29b2d302' + search.ingredientsNumber + search.cuisineType + search.mealType + search.dishType);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -221,8 +217,6 @@ $searchList.addEventListener('click', function viewNewRecipe (event) {
 var $saveRecipe = document.querySelector('.save-recipe-button');
 var $savedRecipesList = document.getElementById('saved-recipes-list');
 
-// console.log($saveRecipe);
-
 $saveRecipe.addEventListener('click', function saveRecipe() {
   for (var i = 0; i < data.savedRecipes.length; i++) {
     if (newRecipe.recipe === data.savedRecipes[i].recipe) {
@@ -234,8 +228,6 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   newRecipe.savedRecipeId = data.nextSavedRecipeId;
   data.savedRecipes.push(newRecipe);
   data.nextSavedRecipeId++;
-  console.log(data.savedRecipes);
-  console.log(data.nextSavedRecipeId);
   $savedRecipesList.append(renderSavedRecipes(newRecipe))
   $searchPage[0].className = 'container tab';
   $searchPage[2].className = 'container tab hidden';
