@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -15,7 +21,7 @@
       <div class="row-header">
         <div class="column-header">
           <h2>My Recipe Book</h2>
-          <a href="#">Recipes</a>
+          <a href="#" class="recipe-book-navigation">Recipes</a>
         </div>
       </div>
     </div>
@@ -134,12 +140,62 @@
           </div>
           <div class="row-filter">
             <div class="column button-row">
-              <button type="button" class="save-filters-button">Save</button>
-              <button type="button" class="save-filters-button return-button ">Return</button>
+              <button type="button" class="save-filters-button green-button">Save</button>
+              <button type="button" class="save-filters-button orange-button ">Return</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Viewing New Recipe page from Search page -->
+        <div class="container tab hidden" data-view="new-recipe-page">
+          <div class="row page-header">
+            <div class="column">
+              <h1>New Recipe</h1>
+            </div>
+          </div>
+          <div class="new-recipe-wrapper">
+            <div class="row">
+              <div class="column">
+                <h1></h1>
+              </div>
+              <div class="flex-wrap margin-bottom">
+                <img class="new-recipe-image" alt="" src="">
+                <div class="ingredients-list margin-center">
+                  <ul class="padding-left margin-zero" id="new-recipe-ingredients-list">
+                  </ul>
+                </div>
+              </div>
+              <div class="recipe-link margin-bottom">
+                <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+              </div>
+              <div class="flex-center">
+                <button type="button" class="save-recipe-button green-button">Save Recipe</button>
+              </div>
             </div>
           </div>
         </div>
       </form>
+    </div>
+
+    <!-- Recipe Book page -->
+    <div class="page hidden" data-view="recipe-book">
+      <div class="container tab" data-view="saved-recipes-page">
+        <div class="row page-header margin-bottom">
+          <div class="column">
+            <h1>Recipe Book</h1>
+            <div class="button-row align-right">
+              <button type="button" class="off-green-button search-navigation">Search</button>
+              <button type="button" class="off-green-button new-recipe-navigation margin-left">Create</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved Recipes List on Recipe Book page -->
+        <div class="row">
+          <ul class="flex-wrap" id="saved-recipes-list">
+          </ul>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
