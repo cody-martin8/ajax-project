@@ -7,6 +7,9 @@ var $newRecipeNav = document.querySelector('.new-recipe-navigation');
 var $recipeBookNav = document.querySelector('.recipe-book-navigation')
 var $filterSave = document.querySelector('.save-filters-button.green-button');
 var $returnButton = document.querySelector('.save-filters-button.orange-button');
+var $savedRecipesTab = document.querySelectorAll('.saved-recipes-tab');
+var $createdRecipesTab = document.querySelectorAll('.created-recipes-tab');
+var $recipeBookTabs = document.querySelectorAll('.row.tab');
 
 $recipeBookNav.addEventListener('click', function () {
   for (var i = 0; i < $pages.length; i++) {
@@ -17,6 +20,30 @@ $recipeBookNav.addEventListener('click', function () {
       $pages[i].className = 'page';
     }
   }
+})
+
+$savedRecipesTab[0].addEventListener('click', function () {
+  console.log('Saved');
+  $recipeBookTabs[0].className = 'row tab';
+  $recipeBookTabs[1].className = 'row tab hidden';
+})
+
+$savedRecipesTab[1].addEventListener('click', function () {
+  console.log('Saved');
+  $recipeBookTabs[0].className = 'row tab';
+  $recipeBookTabs[1].className = 'row tab hidden';
+})
+
+$createdRecipesTab[0].addEventListener('click', function () {
+  console.log('Created');
+  $recipeBookTabs[0].className = 'row tab hidden';
+  $recipeBookTabs[1].className = 'row tab';
+})
+
+$createdRecipesTab[1].addEventListener('click', function () {
+  console.log('Created');
+  $recipeBookTabs[0].className = 'row tab hidden';
+  $recipeBookTabs[1].className = 'row tab';
 })
 
 $searchNav.addEventListener('click', function () {
@@ -35,7 +62,7 @@ $searchNav.addEventListener('click', function () {
 
 // Search page and Filter page functions
 
-var $searchPage = document.querySelectorAll('.tab');
+var $searchPage = document.querySelectorAll('.container.tab');
 var $clearFiltersButton = document.querySelector('.clear-filters');
 var $filters = document.querySelectorAll('.filter-dropdown');
 
