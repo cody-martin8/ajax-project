@@ -180,6 +180,15 @@ select {
   border-radius: 5px;
 }
 
+.white-button {
+  border: solid 2px rgb(118, 184, 95);
+  background-color: white;
+  color: rgb(118, 184, 95);
+  padding: 7px 13px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 .orange-button {
   border: none;
   background-color: rgb(212, 139, 54);
@@ -230,6 +239,10 @@ select {
 
 .padding-left {
   padding-left: 25px;
+}
+
+.padding-adjust {
+  padding: 9px 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -286,4 +299,8 @@ select {
 
   .margin-center {
     margin: 0;
+  }
+
+  .margin-right {
+    margin-right: 20px;
   }

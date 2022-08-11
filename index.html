@@ -169,7 +169,7 @@
                 <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
               </div>
               <div class="flex-center">
-                <button type="button" class="save-recipe-button green-button">Save Recipe</button>
+                <button type="button" class="save-recipe-button green-button margin-bottom">Save Recipe</button>
               </div>
             </div>
           </div>
@@ -191,8 +191,20 @@
         </div>
 
         <!-- Saved Recipes List on Recipe Book page -->
-        <div class="row">
+        <div class="row tab">
+          <div class="flex-buttons">
+            <button type="button" class="white-button margin-right">Saved Recipes</button>
+            <button type="button" class="green-button padding-adjust">Created Recipes</button>
+          </div>
           <ul class="flex-wrap" id="saved-recipes-list">
+          </ul>
+        </div>
+        <div class="row tab hidden">
+          <div class="flex-buttons">
+            <button type="button" class="off-green-button">Saved Recipes</button>
+            <button type="button" class="off-green-button">Created Recipes</button>
+          </div>
+          <ul class="flex-wrap" id="created-recipes-list">
           </ul>
         </div>
       </div>
