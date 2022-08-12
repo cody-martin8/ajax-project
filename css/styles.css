@@ -104,7 +104,8 @@ input:focus {
   color: black;
 }
 
-.new-recipe-image {
+.new-recipe-image,
+.add-notes-image {
   width: 100%;
   height: 300px;
   border-radius: 8px;
@@ -122,6 +123,10 @@ input:focus {
 
 .ingredient p {
   margin: 10px 0;
+}
+
+.notes {
+  width: 100%;
 }
 
 .recipe-link {
@@ -211,8 +216,37 @@ select {
   cursor: pointer;
 }
 
+.cancel-notes-button {
+  margin-left: 40px;
+}
+
 .options-icon {
   margin: 21px 15px 40px 32px;
+}
+
+.options-menu {
+  position: absolute;
+  top: 245px;
+  right: 7px;
+  border: solid 2px rgb(161,188,152);
+  background-color: white;
+  border-radius: 10px;
+  width: 95px;
+  height: 100px;
+}
+
+.options-menu p {
+  margin: 11px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.theme-font-color {
+  color: rgb(161,188,152);
+}
+
+.warning-font-color {
+  color: rgb(212, 139, 54);
 }
 
 .align-right {
@@ -237,12 +271,21 @@ select {
   margin-left: 20px;
 }
 
+.padding-right {
+  padding-top: 3px;
+  padding-right: 5px;
+}
+
 .padding-left {
   padding-left: 25px;
 }
 
 .padding-adjust {
   padding: 9px 15px;
+}
+
+.relative {
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {
@@ -260,7 +303,8 @@ select {
   width: 45%;
   }
 
-  .new-recipe-image {
+  .new-recipe-image,
+  .add-notes-image {
   width: 50%;
   }
 
@@ -277,8 +321,14 @@ select {
     font-size: 24px;
   }
 
-  .save-recipe-button {
+  .save-recipe-button,
+  .save-notes-button,
+  .cancel-notes-button {
     font-size: 24px;
+  }
+
+  .cancel-notes-button {
+    margin-left: 110px;
   }
 
   .filter-navigation {

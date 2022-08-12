@@ -1,6 +1,6 @@
 // Navigation functions
 
-var $pages = document.querySelectorAll('.page');
+var $pages = document.querySelectorAll('main > .page');
 var $filterNav = document.querySelector('.filter-navigation a');
 var $searchNav = document.querySelector('.search-navigation');
 var $newRecipeNav = document.querySelector('.new-recipe-navigation');
@@ -22,28 +22,30 @@ $recipeBookNav.addEventListener('click', function () {
   }
 })
 
-$savedRecipesTab[0].addEventListener('click', function () {
-  console.log('Saved');
+function recipeBookSavedTab() {
   $recipeBookTabs[0].className = 'row tab';
   $recipeBookTabs[1].className = 'row tab hidden';
+}
+
+function recipeBookCreatedTab() {
+  $recipeBookTabs[0].className = 'row tab hidden';
+  $recipeBookTabs[1].className = 'row tab';
+}
+
+$savedRecipesTab[0].addEventListener('click', function () {
+  recipeBooksSavedTab();
 })
 
 $savedRecipesTab[1].addEventListener('click', function () {
-  console.log('Saved');
-  $recipeBookTabs[0].className = 'row tab';
-  $recipeBookTabs[1].className = 'row tab hidden';
+  recipeBookSavedTab();
 })
 
 $createdRecipesTab[0].addEventListener('click', function () {
-  console.log('Created');
-  $recipeBookTabs[0].className = 'row tab hidden';
-  $recipeBookTabs[1].className = 'row tab';
+  recipeBookCreatedTab();
 })
 
 $createdRecipesTab[1].addEventListener('click', function () {
-  console.log('Created');
-  $recipeBookTabs[0].className = 'row tab hidden';
-  $recipeBookTabs[1].className = 'row tab';
+  recipeBookCreatedTab();
 })
 
 $searchNav.addEventListener('click', function () {
@@ -62,7 +64,7 @@ $searchNav.addEventListener('click', function () {
 
 // Search page and Filter page functions
 
-var $searchPage = document.querySelectorAll('.container.tab');
+var $searchPage = document.querySelectorAll('#recipe-search-form .container.tab');
 var $clearFiltersButton = document.querySelector('.clear-filters');
 var $filters = document.querySelectorAll('.filter-dropdown');
 
@@ -263,7 +265,7 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
 
   // < li class="saved-recipe" data - entry - id="#" >
   //   <div class="list-row">
-  //     <div class="list-column">
+  //     <div class="list-column relative">
   //       <div class="saved-recipe-image">
   //         <a href="#"><img alt="bruschetta"
   //           src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
@@ -274,6 +276,13 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   //         </a>
   //         <a href="#" class="options-icon"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
   //       </div>
+  //       <div class="options-menu hidden">
+  //         <div class="justify-right padding-right" >
+  //           <a href="#"><i class="fa-solid fa-xmark"></i></a>
+  //         </div >
+  //         <a href='#' class='notes-navigation'><p class="notes-button theme-font-color">Notes</p></a>
+  //         <a href='#' class='delete-saved-recipe'><p class="delete-button warning-font-color">Delete</p></a>
+  //       </div >
   //     </div>
   //   </div>
   // </li >
@@ -287,7 +296,7 @@ function renderSavedRecipes(newRecipe) {
   listItem.appendChild(listRowDiv);
 
   var listColumnDiv = document.createElement('div');
-  listColumnDiv.className = 'list-column';
+  listColumnDiv.className = 'list-column relative';
   listRowDiv.appendChild(listColumnDiv);
 
   var recipeImageDiv = document.createElement('div');
@@ -298,6 +307,10 @@ function renderSavedRecipes(newRecipe) {
   recipeTitleDiv.className = 'saved-recipe-title flex';
   listColumnDiv.appendChild(recipeTitleDiv);
 
+  var optionsMenu = document.createElement('div');
+  optionsMenu.className = 'options-menu hidden';
+  listColumnDiv.appendChild(optionsMenu);
+
   var imageLink = document.createElement('a');
   imageLink.setAttribute('href', '#');
   recipeImageDiv.appendChild(imageLink);
@@ -305,6 +318,7 @@ function renderSavedRecipes(newRecipe) {
   var image = document.createElement('img');
   image.setAttribute('alt', newRecipe.recipe.label);
   image.setAttribute('src', newRecipe.recipe.image);
+  image.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   imageLink.appendChild(image);
 
   var titleLink = document.createElement('a');
@@ -313,6 +327,7 @@ function renderSavedRecipes(newRecipe) {
 
   var title = document.createElement('h2');
   title.textContent = newRecipe.recipe.label;
+  title.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   titleLink.appendChild(title);
 
   var iconLink = document.createElement('a');
@@ -324,5 +339,106 @@ function renderSavedRecipes(newRecipe) {
   icon.className = 'fa-solid fa-ellipsis fa-xl';
   iconLink.appendChild(icon);
 
+  var closingIconDiv = document.createElement('div');
+  closingIconDiv.className = 'justify-right padding-right';
+  optionsMenu.appendChild(closingIconDiv);
+
+  var closingIconLink = document.createElement('a');
+  closingIconLink.setAttribute('href', '#');
+  closingIconLink.className = 'closing-options-icon';
+  closingIconDiv.appendChild(closingIconLink);
+
+  var closingIcon = document.createElement('i');
+  closingIcon.className = 'fa-solid fa-xmark';
+  closingIconLink.appendChild(closingIcon);
+
+  var notesLink = document.createElement('a');
+  notesLink.setAttribute('href', '#');
+  notesLink.className = 'notes-navigation';
+  optionsMenu.appendChild(notesLink);
+
+  var notesText = document.createElement('p');
+  notesText.className = 'notes-button theme-font-color';
+  notesText.textContent = 'Notes';
+  notesText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
+  notesLink.appendChild(notesText);
+
+  var deleteLink = document.createElement('a');
+  deleteLink.setAttribute('href', '#');
+  deleteLink.className = 'delete-saved-recipe';
+  optionsMenu.appendChild(deleteLink);
+
+  var deleteText = document.createElement('p');
+  deleteText.className = 'delete-button warning-font-color';
+  deleteText.textContent = 'Delete';
+  deleteText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
+  deleteLink.appendChild(deleteText);
+
   return listItem;
 }
+
+var $recipeBookPageNav = document.querySelectorAll('.container.page')
+var $savedRecipeHeading = document.querySelector('.add-notes-wrapper h1');
+var $savedRecipeImage = document.querySelector('.add-notes-wrapper img');
+var $savedRecipeLink = document.querySelector('.add-notes-wrapper a');
+var $savedRecipeIngredients = document.getElementById('add-notes-ingredients-list');
+var savedRecipe;
+
+var $notesArea = document.querySelector('.notes');
+var $saveNotes = document.querySelector('.save-notes-button');
+var $cancelNotes = document.querySelector('.cancel-notes-button');
+
+function notesPageNav() {
+  $recipeBookPageNav[0].className = 'container page hidden';
+  $recipeBookPageNav[1].className = 'container page';
+}
+
+$savedRecipesList.addEventListener('click', function openOptionsMenu (event) {
+  event.preventDefault();
+  if (event.target.matches('.saved-recipe i.fa-ellipsis')) {
+    var recipeDivs = event.target.closest('.list-column');
+    recipeDivs.childNodes[2].className = 'options-menu';
+  } else if (event.target.matches('.saved-recipe i.fa-xmark')) {
+    var recipeDivs = event.target.closest('.list-column');
+    recipeDivs.childNodes[2].className = 'options-menu hidden';
+  }
+})
+
+$savedRecipesList.addEventListener('click', function openAddNotes(event) {
+  for (var i = 0; i < data.savedRecipes.length; i++) {
+    if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
+      // var addNotesRecipe = data.savedRecipes[i];
+      savedRecipe = data.savedRecipes[i];
+    }
+  }
+  if (event.target.matches('.notes-button')) {
+    $savedRecipeHeading.textContent = savedRecipe.recipe.label;
+    $savedRecipeImage.alt = savedRecipe.recipe.label;
+    $savedRecipeImage.src = savedRecipe.recipe.image;
+    $savedRecipeLink.href = savedRecipe.recipe.url;
+    for (var n = 0; n < savedRecipe.recipe.ingredients.length; n++) {
+      var ingredient = document.createElement('li');
+      var ingredientText = document.createElement('p');
+      ingredientText.textContent = savedRecipe.recipe.ingredients[n].text;
+      ingredient.appendChild(ingredientText);
+      ingredient.className = 'ingredient';
+      $savedRecipeIngredients.appendChild(ingredient);
+    }
+    notesPageNav();
+  }
+})
+
+$savedRecipesList.addEventListener('click', function openAddNotes(event) {
+  if (event.target.matches('.delete-button')) {
+    console.log('Delete Recipe');
+  }
+})
+
+// $saveNotes.addEventListener('click', function () {
+//   savedRecipe.notes = data$notesArea.value;
+//   for (var i = 0; i < data.savedRecipes.length; i++) {
+//     if (data.savedRecipes.savedRecipeId === savedRecipe.savedRecipeId) {
+
+//     }
+//   }
+// })

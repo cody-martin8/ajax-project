@@ -179,7 +179,7 @@
 
     <!-- Recipe Book page -->
     <div class="page hidden" data-view="recipe-book">
-      <div class="container">
+      <div class="container page">
         <div class="row page-header margin-bottom">
           <div class="column">
             <h1>Recipe Book</h1>
@@ -192,7 +192,7 @@
 
         <!-- Saved Recipes List on Recipe Book page -->
         <div class="row tab" data-view="saved-recipes-page">
-          <div class="flex-buttons">
+          <div class="flex-buttons margin-bottom">
             <button type="button" class="saved-recipes-tab white-button margin-right">Saved Recipes</button>
             <button type="button" class="created-recipes-tab green-button padding-adjust">Created Recipes</button>
           </div>
@@ -206,6 +206,39 @@
           </div>
           <ul class="flex-wrap" id="created-recipes-list">
           </ul>
+        </div>
+      </div>
+
+      <!-- Add Notes to Saved Recipe Page -->
+      <div class="container page hidden" data-view="saved-recipe-page">
+        <div class="row page-header">
+          <div class="column">
+            <h1>Add Notes</h1>
+          </div>
+        </div>
+        <div class="add-notes-wrapper">
+          <div class="row">
+            <div class="column">
+              <h1></h1>
+            </div>
+            <div class="flex-wrap margin-bottom">
+              <img class="add-notes-image" alt="" src="">
+              <div class="ingredients-list margin-center">
+                <ul class="padding-left margin-zero" id="add-notes-ingredients-list">
+                </ul>
+              </div>
+            </div>
+            <div class="add-notes">
+              <textarea name="notes" rows="7" class="notes margin-bottom" placeholder="Add notes here..."></textarea>
+            </div>
+            <div class="recipe-link margin-bottom">
+              <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+            </div>
+            <div class="flex-center">
+              <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button>
+              <button type="button" class="cancel-notes-button orange-button margin-bottom">Cancel</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
