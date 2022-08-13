@@ -20,6 +20,7 @@ $recipeBookNav.addEventListener('click', function () {
       $pages[i].className = 'page';
     }
   }
+  returnToRecipeBook();
 })
 
 function recipeBookSavedTab() {
@@ -378,27 +379,70 @@ function renderSavedRecipes(newRecipe) {
 }
 
 var $recipeBookPageNav = document.querySelectorAll('.container.page')
-var $savedRecipeHeading = document.querySelector('.add-notes-wrapper h1');
-var $savedRecipeImage = document.querySelector('.add-notes-wrapper img');
-var $savedRecipeLink = document.querySelector('.add-notes-wrapper a');
-var $savedRecipeIngredients = document.getElementById('add-notes-ingredients-list');
-// var savedRecipe;
+var $addNotesHeading = document.querySelector('.add-notes-wrapper h1');
+var $addNotesImage = document.querySelector('.add-notes-wrapper img');
+var $addNotesLink = document.querySelector('.add-notes-wrapper a');
+var $addNotesIngredients = document.getElementById('add-notes-ingredients-list');
 
 var $notesArea = document.querySelector('.notes');
 var $saveNotes = document.querySelector('.save-notes-button');
 var $cancelNotes = document.querySelector('.cancel-notes-button');
+
+var $savedRecipeHeading = document.querySelector('.view-saved-recipe-wrapper h1');
+var $savedRecipeImage = document.querySelector('.view-saved-recipe-wrapper img');
+var $savedRecipeLink = document.querySelector('.view-saved-recipe-wrapper a');
+var $savedRecipeIngredients = document.getElementById('view-saved-recipe-ingredients-list');
+var $savedRecipeNotes = document.querySelector('.view-saved-recipe-notes p');
+var $returnButton = document.querySelector('.return-button');
 
 function notesPageNav() {
   $recipeBookPageNav[0].className = 'container page hidden';
   $recipeBookPageNav[1].className = 'container page';
 }
 
-function closeNotesPage() {
-  $recipeBookPageNav[0].className = 'container page';
-  $recipeBookPageNav[1].className = 'container page hidden';
+function viewSavedRecipe() {
+  $recipeBookPageNav[0].className = 'container page hidden';
+  $recipeBookPageNav[2].className = 'container page';
 }
 
-// Open Options Menu
+function returnToRecipeBook() {
+  $recipeBookPageNav[0].className = 'container page';
+  $recipeBookPageNav[1].className = 'container page hidden';
+  $recipeBookPageNav[2].className = 'container page hidden';
+}
+
+// Open View Saved Recipe page and populate values
+$savedRecipesList.addEventListener('click', function openAddNotes(event) {
+  while ($savedRecipeIngredients.firstChild) {
+    $savedRecipeIngredients.removeChild($savedRecipeIngredients.firstChild);
+  }
+  for (var i = 0; i < data.savedRecipes.length; i++) {
+    if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
+      data.editing = data.savedRecipes[i];
+    }
+  }
+  if (event.target.matches('.saved-recipe-image img') || event.target.matches('.saved-recipe-title h2')) {
+    // console.log('View this recipe:', data.editing);
+    $savedRecipeHeading.textContent = data.editing.recipe.label;
+    $savedRecipeImage.alt = data.editing.recipe.label;
+    $savedRecipeImage.src = data.editing.recipe.image;
+    $savedRecipeLink.href = data.editing.recipe.url;
+    if (data.editing.notes !== undefined) {
+      $savedRecipeNotes.textContent = data.editing.notes;
+    }
+    for (var n = 0; n < data.editing.recipe.ingredients.length; n++) {
+      var ingredient = document.createElement('li');
+      var ingredientText = document.createElement('p');
+      ingredientText.textContent = data.editing.recipe.ingredients[n].text;
+      ingredient.appendChild(ingredientText);
+      ingredient.className = 'ingredient';
+      $savedRecipeIngredients.appendChild(ingredient);
+    }
+    viewSavedRecipe();
+  }
+})
+
+// Open (if and else if statement) and Close (else statement) Options Menu
 $savedRecipesList.addEventListener('click', function openOptionsMenu (event) {
   event.preventDefault();
   if (event.target.matches('.saved-recipe i.fa-ellipsis')) {
@@ -417,34 +461,39 @@ $savedRecipesList.addEventListener('click', function openOptionsMenu (event) {
   }
 })
 
+$returnButton.addEventListener('click', function () {
+  console.log('return');
+  returnToRecipeBook();
+  data.editing = null;
+})
+
 // Open Add Notes page from Options Menu and populate values
 $savedRecipesList.addEventListener('click', function openAddNotes(event) {
+  while ($addNotesIngredients.firstChild) {
+    $addNotesIngredients.removeChild($addNotesIngredients.firstChild);
+  }
   for (var i = 0; i < data.savedRecipes.length; i++) {
     if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
-      // var addNotesRecipe = data.savedRecipes[i];
       data.editing = data.savedRecipes[i];
     }
   }
   if (event.target.matches('.notes-button')) {
-    $savedRecipeHeading.textContent = data.editing.recipe.label;
-    $savedRecipeImage.alt = data.editing.recipe.label;
-    $savedRecipeImage.src = data.editing.recipe.image;
-    $savedRecipeLink.href = data.editing.recipe.url;
+    $addNotesHeading.textContent = data.editing.recipe.label;
+    $addNotesImage.alt = data.editing.recipe.label;
+    $addNotesImage.src = data.editing.recipe.image;
+    $addNotesLink.href = data.editing.recipe.url;
+    if (data.editing.notes !== undefined) {
+      $notesArea.value = data.editing.notes;
+    }
     for (var n = 0; n < data.editing.recipe.ingredients.length; n++) {
       var ingredient = document.createElement('li');
       var ingredientText = document.createElement('p');
       ingredientText.textContent = data.editing.recipe.ingredients[n].text;
       ingredient.appendChild(ingredientText);
       ingredient.className = 'ingredient';
-      $savedRecipeIngredients.appendChild(ingredient);
+      $addNotesIngredients.appendChild(ingredient);
     }
     notesPageNav();
-  }
-})
-
-$savedRecipesList.addEventListener('click', function initiateDelete(event) {
-  if (event.target.matches('.delete-button')) {
-    console.log('Delete Recipe');
   }
 })
 
@@ -456,6 +505,18 @@ $saveNotes.addEventListener('click', function saveNotes() {
     }
   }
   $notesArea.value = '';
+  returnToRecipeBook();
+  data.editing = null;
+})
+
+$cancelNotes.addEventListener('click', function cancelNotes() {
+  $notesArea.value = '';
   closeNotesPage();
   data.editing = null;
+})
+
+$savedRecipesList.addEventListener('click', function initiateDelete(event) {
+  if (event.target.matches('.delete-button')) {
+    console.log('Delete Recipe');
+  }
 })

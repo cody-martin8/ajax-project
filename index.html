@@ -210,7 +210,7 @@
       </div>
 
       <!-- Add Notes to Saved Recipe Page -->
-      <div class="container page hidden" data-view="saved-recipe-page">
+      <div class="container page hidden" data-view="add-notes-page">
         <div class="row page-header">
           <div class="column">
             <h1>Add Notes</h1>
@@ -237,6 +237,40 @@
             <div class="flex-center">
               <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button>
               <button type="button" class="cancel-notes-button orange-button margin-bottom">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Saved Recipe Page -->
+      <div class="container page hidden" data-view="view-saved-recipe-page">
+        <div class="row page-header">
+          <div class="column">
+            <h1>Saved Recipe</h1>
+          </div>
+        </div>
+        <div class="view-saved-recipe-wrapper">
+          <div class="row">
+            <div class="column">
+              <h1></h1>
+            </div>
+            <div class="flex-wrap margin-bottom">
+              <img class="view-saved-recipe-image" alt="" src="">
+              <div class="ingredients-list margin-center">
+                <ul class="padding-left margin-zero" id="view-saved-recipe-ingredients-list">
+                </ul>
+              </div>
+            </div>
+            <div class="view-saved-recipe-notes">
+              <h3>Recipe Notes</h3>
+              <p>Notes can be added here if there are any adjustments that you prefer with this recipe.</p>
+            </div>
+            <div class="recipe-link margin-bottom">
+              <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+            </div>
+            <div class="flex-center">
+              <!-- <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button> -->
+              <button type="button" class="return-button orange-button margin-bottom">Return</button>
             </div>
           </div>
         </div>
