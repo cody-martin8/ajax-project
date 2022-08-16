@@ -38,7 +38,8 @@ body {
   justify-content: center;
 }
 
-.flex-buttons {
+.flex-buttons,
+.flex-space-between {
   display: flex;
   justify-content: space-between;
 }

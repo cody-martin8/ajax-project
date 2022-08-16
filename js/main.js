@@ -271,7 +271,7 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   //         <a href="#"><img alt="bruschetta"
   //           src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F54165-Balsamic-Bruschetta-mfs_002.jpg"></a>
   //       </div>
-  //       <div class="saved-recipe-title flex">
+  //       <div class="saved-recipe-title flex-space-between">
   //         <a href="#">
   //           <h2>Bruschetta</h2>
   //         </a>
@@ -305,7 +305,7 @@ function renderSavedRecipes(newRecipe) {
   listColumnDiv.appendChild(recipeImageDiv);
 
   var recipeTitleDiv = document.createElement('div');
-  recipeTitleDiv.className = 'saved-recipe-title flex';
+  recipeTitleDiv.className = 'saved-recipe-title flex-space-between';
   listColumnDiv.appendChild(recipeTitleDiv);
 
   var optionsMenu = document.createElement('div');
@@ -443,21 +443,20 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
 })
 
 // Open (if and else if statement) and Close (else statement) Options Menu
-$savedRecipesList.addEventListener('click', function openOptionsMenu (event) {
+$savedRecipesList.addEventListener('click', function openOptionsMenu(event) {
   event.preventDefault();
+  for (var i = 1; i - 1 < data.savedRecipes.length; i++) {
+    if ($savedRecipesList.childNodes[i].querySelector('.options-menu.hidden') === null) {
+      var close = $savedRecipesList.childNodes[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
   if (event.target.matches('.saved-recipe i.fa-ellipsis')) {
     var recipeDivs = event.target.closest('.list-column');
     recipeDivs.childNodes[2].className = 'options-menu';
   } else if (event.target.matches('.saved-recipe i.fa-xmark')) {
     var recipeDivs = event.target.closest('.list-column');
     recipeDivs.childNodes[2].className = 'options-menu hidden';
-  } else {
-    for (var i = 1; i - 1 < data.savedRecipes.length; i++) {
-      if ($savedRecipesList.childNodes[i].querySelector('.options-menu.hidden') === null) {
-        var close = $savedRecipesList.childNodes[i].querySelector('.options-menu');
-        close.className = 'options-menu hidden';
-      }
-    }
   }
 })
 
@@ -511,7 +510,7 @@ $saveNotes.addEventListener('click', function saveNotes() {
 
 $cancelNotes.addEventListener('click', function cancelNotes() {
   $notesArea.value = '';
-  closeNotesPage();
+  returnToRecipeBook();
   data.editing = null;
 })
 

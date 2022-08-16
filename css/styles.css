@@ -30,6 +30,10 @@ body {
   font-size: 28px;
 }
 
+h1 {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .filter-navigation a {
   text-decoration: none;
   font-family: sans-serif;
@@ -128,6 +132,8 @@ input:focus {
 
 .notes {
   width: 100%;
+  border: solid 1px lightgray;
+  margin-top: 15px;
 }
 
 .recipe-link {
@@ -144,7 +150,7 @@ button.clear-filters{
   font-size: 14px;
 }
 
-button.clear-filters:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -234,6 +240,10 @@ select {
   border-radius: 10px;
   width: 95px;
   height: 100px;
+}
+
+.options-menu a {
+  text-decoration: none;
 }
 
 .options-menu p {
