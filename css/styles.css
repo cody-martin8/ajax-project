@@ -30,6 +30,10 @@ body {
   font-size: 28px;
 }
 
+h1 {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .filter-navigation a {
   text-decoration: none;
   font-family: sans-serif;
@@ -104,7 +108,9 @@ input:focus {
   color: black;
 }
 
-.new-recipe-image {
+.new-recipe-image,
+.add-notes-image,
+.view-saved-recipe-image {
   width: 100%;
   height: 300px;
   border-radius: 8px;
@@ -124,6 +130,12 @@ input:focus {
   margin: 10px 0;
 }
 
+.notes {
+  width: 100%;
+  border: solid 1px lightgray;
+  margin-top: 15px;
+}
+
 .recipe-link {
   font-size: 28px;
   display: flex;
@@ -138,7 +150,7 @@ button.clear-filters{
   font-size: 14px;
 }
 
-button.clear-filters:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -180,6 +192,15 @@ select {
   border-radius: 5px;
 }
 
+.white-button {
+  border: solid 2px rgb(118, 184, 95);
+  background-color: white;
+  color: rgb(118, 184, 95);
+  padding: 7px 13px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 .orange-button {
   border: none;
   background-color: rgb(212, 139, 54);
@@ -202,8 +223,41 @@ select {
   cursor: pointer;
 }
 
+.cancel-notes-button {
+  margin-left: 40px;
+}
+
 .options-icon {
   margin: 21px 15px 40px 32px;
+}
+
+.options-menu {
+  position: absolute;
+  top: 245px;
+  right: 7px;
+  border: solid 2px rgb(161,188,152);
+  background-color: white;
+  border-radius: 10px;
+  width: 95px;
+  height: 100px;
+}
+
+.options-menu a {
+  text-decoration: none;
+}
+
+.options-menu p {
+  margin: 11px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.theme-font-color {
+  color: rgb(161,188,152);
+}
+
+.warning-font-color {
+  color: rgb(212, 139, 54);
 }
 
 .align-right {
@@ -228,8 +282,21 @@ select {
   margin-left: 20px;
 }
 
+.padding-right {
+  padding-top: 3px;
+  padding-right: 5px;
+}
+
 .padding-left {
   padding-left: 25px;
+}
+
+.padding-adjust {
+  padding: 9px 15px;
+}
+
+.relative {
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {
@@ -247,7 +314,9 @@ select {
   width: 45%;
   }
 
-  .new-recipe-image {
+  .new-recipe-image,
+  .add-notes-image,
+  .view-saved-recipe-image {
   width: 50%;
   }
 
@@ -264,8 +333,15 @@ select {
     font-size: 24px;
   }
 
-  .save-recipe-button {
+  .save-recipe-button,
+  .save-notes-button,
+  .cancel-notes-button,
+  .return-button {
     font-size: 24px;
+  }
+
+  .cancel-notes-button {
+    margin-left: 110px;
   }
 
   .filter-navigation {
@@ -286,4 +362,8 @@ select {
 
   .margin-center {
     margin: 0;
+  }
+
+  .margin-right {
+    margin-right: 20px;
   }
