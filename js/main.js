@@ -519,3 +519,14 @@ $savedRecipesList.addEventListener('click', function initiateDelete(event) {
     console.log('Delete Recipe');
   }
 })
+
+var $createRecipeImage = document.querySelector('.create-recipe-image');
+var $createRecipeTitle = document.querySelector('.create-recipe-title');
+var $photoUrl = document.querySelector('.create-recipe-image-url');
+var $ingredients = document.querySelector('#create-ingredients-list');
+var $directions = document.querySelector('#create-directions-list');
+
+$photoUrl.addEventListener('input', function inputImage(event) {
+  event.preventDefault();
+  $createRecipeImage.setAttribute('src', event.target.value);
+});

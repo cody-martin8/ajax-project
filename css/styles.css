@@ -64,8 +64,6 @@ input:focus {
 }
 
 .search-button {
-  /* margin-top: 15px;
-  margin-bottom: 50px; */
   border: none;
   background-color: rgb(118, 184, 95);
   color: white;
@@ -110,7 +108,8 @@ input:focus {
 
 .new-recipe-image,
 .add-notes-image,
-.view-saved-recipe-image {
+.view-saved-recipe-image,
+.create-recipe-image {
   width: 100%;
   height: 300px;
   border-radius: 8px;
@@ -252,6 +251,43 @@ select {
   font-weight: bold;
 }
 
+#create-directions-list > li,
+#create-ingredients-list > li {
+  list-style-type: none;
+}
+
+.create-directions-list,
+.create-ingredients-list {
+  margin: 0;
+  padding: 0;
+}
+
+.create-recipe-input {
+  width: 100%;
+  height: 2rem;
+  margin: 4px 0;
+  border-radius: 5px;
+  border: solid 2px rgb(201, 223, 194);
+}
+
+.create-recipe-textarea {
+  width: 100%;
+  margin: 4px 0;
+  border-radius: 5px;
+  border: solid 2px rgb(201, 223, 194);
+}
+
+.create-recipe-title,
+.create-recipe-image-url {
+  margin-bottom: 20px;
+}
+
+.add-ingredient-input,
+.add-directions-input {
+  color:rgb(118, 184, 95);
+  margin: 5px 0;
+}
+
 .theme-font-color {
   color: rgb(161,188,152);
 }
@@ -304,6 +340,14 @@ select {
     height: 100vh;
   }
 
+  .create-recipe-column-a {
+    width: 45%;
+  }
+
+  .create-recipe-column-b {
+    width: 45%;
+  }
+
   .query-text {
   width: 50%;
   font-size: 24px;
@@ -329,14 +373,12 @@ select {
     width: 250px;
   }
 
-  .search-button {
-    font-size: 24px;
-  }
-
+  .search-button,
   .save-recipe-button,
   .save-notes-button,
   .cancel-notes-button,
-  .return-button {
+  .return-button,
+  .cancel-recipe-button {
     font-size: 24px;
   }
 

@@ -29,7 +29,7 @@
   <main>
 
     <!-- Search page for search form -->
-    <div class="page" data-view="search-form">
+    <div class="page hidden" data-view="search-form">
       <form id="recipe-search-form">
         <div class="container tab" data-view="search-page">
           <div class="row page-header">
@@ -171,6 +171,85 @@
               <div class="flex-center">
                 <button type="button" class="save-recipe-button green-button margin-bottom">Save Recipe</button>
               </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Create Recipe Page -->
+    <!-- Look at Code Journal to refine formatting  -->
+    <div class="page" data-view="create-recipe-page">
+      <form id="create-recipe-form">
+        <div class="container">
+          <div class="row page-header">
+            <div class="column">
+              <h1>Create Recipe</h1>
+            </div>
+          </div>
+          <div class="create-recipe-row flex-full-screen">
+            <div class="create-recipe-column-a">
+              <img class="create-recipe-image margin-bottom" alt="" src="images/placeholder-image-square.jpg">
+              <div class="title-input">
+                <label for="create-recipe-title" class="block">Title</label>
+                <input required name="title" type="text" class="create-recipe-title create-recipe-input">
+              </div>
+              <div class="image-url-input">
+                <label for="create-recipe-image-url" class="block">Photo URL</label>
+                <input required name="image-url" type="text" class="create-recipe-image-url create-recipe-input">
+              </div>
+            </div>
+            <div class="create-recipe-column-b margin-bottom">
+              <div class="create-ingredients">
+                <ul class="create-ingredients-list" id="create-ingredients-list">
+                  <label for="create-ingredients" class="block">Ingredients</label>
+                  <li>
+                    <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+                  </li>
+                  <li>
+                    <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+                  </li>
+                  <li>
+                    <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+                  </li>
+                  <li>
+                    <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+                  </li>
+                  <li>
+                    <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+                  </li>
+                </ul>
+                <div class="add-ingredient-input justify-right">
+                  <a><i class="fa-solid fa-plus fa-xl"></i></a>
+                </div>
+                <!-- Build a function that creates new inputs in the DOM -->
+                <!-- Be able to reset inputs to original setting -->
+              </div>
+              <div class="create-directions">
+                <ul class="create-directions-list" id="create-directions-list">
+                  <label for="create-directions" class="block">Directions</label>
+                  <li>
+                    <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
+                  </li>
+                  <li>
+                    <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
+                  </li>
+                  <li>
+                    <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
+                  </li>
+                </ul>
+                <div class="add-directions-input justify-right">
+                  <a><i class="fa-solid fa-plus fa-xl"></i></a>
+                </div>
+                <!-- Build a function that creates new inputs in the DOM -->
+                <!-- Be able to reset inputs to original setting -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="flex-center">
+              <button type="button" class="save-recipe-button green-button margin-bottom">Save Recipe</button>
+              <button type="button" class="cancel-recipe-button orange-button margin-bottom">Cancel</button>
             </div>
           </div>
         </div>
