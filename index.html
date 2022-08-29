@@ -219,11 +219,10 @@
                     <input required name="ingredient" type="text" class="ingredient create-recipe-input">
                   </li>
                 </ul>
-                <div class="add-ingredient-input justify-right">
-                  <a><i class="fa-solid fa-plus fa-xl"></i></a>
+                <div class="justify-right">
+                  <a href="#" class="add-ingredient-input"><i class="fa-solid fa-plus fa-xl"></i></a>
+                  <a href="#" class="remove-ingredient-input margin-left-small"><i class="fa-solid fa-minus fa-xl"></i></a>
                 </div>
-                <!-- Build a function that creates new inputs in the DOM -->
-                <!-- Be able to reset inputs to original setting -->
               </div>
               <div class="create-directions">
                 <ul class="create-directions-list" id="create-directions-list">
@@ -238,18 +237,17 @@
                     <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
                   </li>
                 </ul>
-                <div class="add-directions-input justify-right">
-                  <a><i class="fa-solid fa-plus fa-xl"></i></a>
+                <div class="justify-right">
+                  <a href="#" class="add-directions-input"><i class="fa-solid fa-plus fa-xl"></i></a>
+                  <a href="#" class="remove-directions-input margin-left-small"><i class="fa-solid fa-minus fa-xl"></i></a>
                 </div>
-                <!-- Build a function that creates new inputs in the DOM -->
-                <!-- Be able to reset inputs to original setting -->
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="flex-center">
-              <button type="button" class="save-recipe-button green-button margin-bottom">Save Recipe</button>
-              <button type="button" class="cancel-recipe-button orange-button margin-bottom">Cancel</button>
+            <div class="justify-right">
+              <button type="button" class="save-recipe-button green-button margin-bottom margin-right-large">Save Recipe</button>
+              <button class="cancel-recipe-button orange-button margin-bottom margin-left-large">Cancel</button>
             </div>
           </div>
         </div>
@@ -264,7 +262,7 @@
             <h1>Recipe Book</h1>
             <div class="button-row align-right">
               <button type="button" class="off-green-button search-navigation">Search</button>
-              <button type="button" class="off-green-button new-recipe-navigation margin-left">Create</button>
+              <button type="button" class="off-green-button create-recipe-navigation margin-left">Create</button>
             </div>
           </div>
         </div>
@@ -351,7 +349,7 @@
               <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
             </div>
             <div class="flex-center">
-              <!-- <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button> -->
+              <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button>
               <button type="button" class="return-button orange-button margin-bottom">Return</button>
             </div>
           </div>

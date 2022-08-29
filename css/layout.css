@@ -29,6 +29,11 @@ body {
   justify-content: flex-end;
 }
 
+.justify-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .flex {
   display: flex;
 }

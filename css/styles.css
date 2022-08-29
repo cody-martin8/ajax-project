@@ -283,7 +283,9 @@ select {
 }
 
 .add-ingredient-input,
-.add-directions-input {
+.add-directions-input,
+.remove-ingredient-input,
+.remove-directions-input {
   color:rgb(118, 184, 95);
   margin: 5px 0;
 }
@@ -316,6 +318,18 @@ select {
 
 .margin-left {
   margin-left: 20px;
+}
+
+.margin-left-small {
+  margin-left: 10px;
+}
+
+.margin-left-large {
+  margin-left: 40px;
+}
+
+.margin-right-large {
+  margin-right: 40px;
 }
 
 .padding-right {
