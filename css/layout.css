@@ -29,6 +29,11 @@ body {
   justify-content: flex-end;
 }
 
+.justify-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .flex {
   display: flex;
 }
@@ -64,6 +69,11 @@ body {
 
   .column-half {
     width: 45%;
+  }
+
+  .flex-full-screen {
+    display: flex;
+    justify-content: space-between;
   }
 
   .flex-wrap {
