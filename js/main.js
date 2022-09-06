@@ -655,21 +655,34 @@ $createRecipe.addEventListener('submit', function inputCreateRecipe(event) {
     $createRecipeImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     $createRecipe.reset();
     recipeBookNav()
-  // } else {
+  } else {
 
     // Edited Recipes
-    // data.editing.title = event.target[0].value;
-    // data.editing.photoUrl = event.target[1].value;
+    $createRecipeHeader.textContent = 'Create Recipe';
+    data.editing.ingredients = [];
+    data.editing.directions = [];
+    data.editing.title = event.target[0].value;
+    data.editing.photoUrl = event.target[1].value;
+    for (var i = 2; i < event.target.length - 2; i++) {
+      if (event.target[i].className === 'ingredient create-recipe-input') {
+        data.editing.ingredients.push(event.target[i].value);
+      }
+      if (event.target[i].className === 'directions create-recipe-textarea') {
+        data.editing.directions.push(event.target[i].value);
+      }
+    }
 
-    // for (var n = 0; n < data.createdRecipes.length; n++) {
-    //   if (data.editing.createdRecipeId === data.entries[n].createdRecipeId) {
-    //     data.createdRecipes[n] = data.editing;
-    //     var createdRecipes = document.querySelectorAll('li.created-recipe');
-    //     createdRecipes[n].replaceWith(renderCreatedRecipes(data.createdRecipes[n]));
-    //   }
-    // }
-    // data.editing = null;
-    // recipeBookNav();
+    for (var n = 0; n < data.createdRecipes.length; n++) {
+      if (data.editing.createdRecipeId === data.createdRecipes[n].createdRecipeId) {
+        data.createdRecipes[n] = data.editing;
+        var createdRecipes = document.querySelectorAll('li.created-recipe');
+        createdRecipes[n].replaceWith(renderCreatedRecipes(data.createdRecipes[n]));
+      }
+    }
+    data.editing = null;
+    $createRecipeImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $createRecipe.reset();
+    recipeBookNav();
   }
 });
 
