@@ -38,7 +38,7 @@ function recipeBookCreatedTab() {
 }
 
 $savedRecipesTab[0].addEventListener('click', function () {
-  recipeBooksSavedTab();
+  recipeBookSavedTab();
 })
 
 $savedRecipesTab[1].addEventListener('click', function () {
@@ -67,7 +67,7 @@ $searchNav.addEventListener('click', function () {
   $searchPage[2].className = 'container tab hidden';
 })
 
-$createRecipeNav.addEventListener('click', function () {
+function createRecipeNav() {
   for (var i = 0; i < $pages.length; i++) {
     if ($pages[i].dataset.view !== 'create-recipe-page') {
       $pages[i].className = 'page hidden';
@@ -76,6 +76,10 @@ $createRecipeNav.addEventListener('click', function () {
       $pages[i].className = 'page';
     }
   }
+}
+
+$createRecipeNav.addEventListener('click', function () {
+  createRecipeNav();
 })
 
 // Search page and Filter page functions
@@ -781,3 +785,55 @@ function renderCreatedRecipes(newRecipe) {
 
   return listItem;
 }
+
+// Improve Options menu functionality
+// Link Recipe Book created recipes to a View Created Recipe Page(new page) and an Edit Recipe page(reformatted Create Recipe page)
+// Incorporate inputs functionality from notes in Notes app
+
+$createRecipeHeader = document.querySelector('#create-recipe-form h1');
+console.log($createRecipeHeader.textContent);
+
+$createdRecipesList.addEventListener('click', function openEditRecipe(event) {
+  // while ($editRecipeIngredients.firstChild) {
+  //   $editRecipeIngredients.removeChild($editRecipeIngredients.firstChild);
+  // }
+  for (var i = 0; i < data.createdRecipes.length; i++) {
+    if (String(data.createdRecipes[i].createdRecipeId) === event.target.dataset.entryId) {
+      data.editing = data.createdRecipes[i];
+    }
+  }
+  if (event.target.matches('.edit-button')) {
+    $createRecipeHeader.textContent = 'Edit Recipe';
+    $createRecipeImage.alt = data.editing.title;
+    $createRecipeImage.src = data.editing.photoUrl;
+    $createRecipeTitle.value = data.editing.title;
+    $photoUrl.value = data.editing.photoUrl;
+    var ingrInputs = $createIngredientsList.querySelectorAll('li');
+    while (ingrInputs.length > 1) {
+      ingrInputs[ingrInputs.length - 1].remove();
+      ingrInputs = $createIngredientsList.querySelectorAll('li');
+    }
+    for (var x = 1; x < data.editing.ingredients.length; x++) {
+      $createIngredientsList.append(renderIngrInput());
+    }
+    ingrInputs = $createIngredientsList.querySelectorAll('li');
+    for (var a = 0; a < data.editing.ingredients.length; a++) {
+      ingrInputs[a].firstElementChild.value = data.editing.ingredients[a];
+    }
+
+    var dirInputs = $createDirectionsList.querySelectorAll('li');
+    while (dirInputs.length > 1) {
+      dirInputs[dirInputs.length - 1].remove();
+      dirInputs = $createDirectionsList.querySelectorAll('li');
+    }
+    for (var y = 1; y < data.editing.directions.length; y++) {
+      $createDirectionsList.append(renderDirInput());
+    }
+    dirInputs = $createDirectionsList.querySelectorAll('li');
+    for (var b = 0; b < data.editing.directions.length; b++) {
+      dirInputs[b].firstElementChild.value = data.editing.directions[b];
+    }
+    createRecipeNav();
+    returnToRecipeBook();
+  }
+})
