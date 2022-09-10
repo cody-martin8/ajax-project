@@ -246,7 +246,7 @@
           <div class="row">
             <div class="justify-right">
               <button class="save-recipe-button green-button margin-bottom margin-right-large">Save Recipe</button>
-              <button class="cancel-recipe-button orange-button margin-bottom margin-left-large">Cancel</button>
+              <button type="button" class="cancel-recipe-button orange-button margin-bottom margin-left-large">Cancel</button>
             </div>
           </div>
         </div>
@@ -348,12 +348,48 @@
               <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
             </div>
             <div class="flex-center">
-              <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button>
-              <button type="button" class="return-button orange-button margin-bottom">Return</button>
+              <button type="button" class="return-saved-button orange-button margin-bottom">Return</button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- View Created Recipe Page -->
+      <div class="container page hidden" data-view="view-created-recipe-page">
+        <div class="row page-header">
+          <div class="column">
+            <h1>Created Recipe</h1>
+          </div>
+        </div>
+        <div class="view-created-recipe-wrapper">
+          <div class="row">
+            <div class="column">
+              <h1></h1>
+            </div>
+            <div class="flex-full-screen">
+              <div class="view-created-recipe-ingredients">
+                <img class="view-created-recipe-image margin-bottom-sm" alt="" src="">
+                <div class="ingredients-list margin-center-five margin-bottom">
+                  <h3>Ingredients</h3>
+                  <ul class="padding-left margin-zero" id="view-created-recipe-ingredients-list">
+                  </ul>
+                </div>
+              </div>
+              <div class="view-created-recipe-directions margin-bottom">
+                <div class="directions-list">
+                  <h3>Directions</h3>
+                  <ul class="padding-left margin-zero" id="view-created-recipe-directions-list">
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex-center">
+              <button type="button" class="return-created-button orange-button margin-bottom">Return</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
   <script src="js/data.js"></script>
