@@ -397,7 +397,7 @@ function renderSavedRecipes(newRecipe) {
   return listItem;
 }
 
-var $recipeBookPageNav = document.querySelectorAll('.container.page')
+var $recipeBookPageNav = document.querySelectorAll('.container.page');
 var $addNotesHeading = document.querySelector('.add-notes-wrapper h1');
 var $addNotesImage = document.querySelector('.add-notes-wrapper img');
 var $addNotesLink = document.querySelector('.add-notes-wrapper a');
@@ -412,7 +412,7 @@ var $savedRecipeImage = document.querySelector('.view-saved-recipe-wrapper img')
 var $savedRecipeLink = document.querySelector('.view-saved-recipe-wrapper a');
 var $savedRecipeIngredients = document.getElementById('view-saved-recipe-ingredients-list');
 var $savedRecipeNotes = document.querySelector('.view-saved-recipe-notes p');
-var $returnButton = document.querySelector('.return-button');
+var $returnSavedButton = document.querySelector('.return-saved-button');
 
 function notesPageNav() {
   $recipeBookPageNav[0].className = 'container page hidden';
@@ -424,10 +424,16 @@ function viewSavedRecipe() {
   $recipeBookPageNav[2].className = 'container page';
 }
 
+function viewCreatedRecipe() {
+  $recipeBookPageNav[0].className = 'container page hidden';
+  $recipeBookPageNav[3].className = 'container page';
+}
+
 function returnToRecipeBook() {
   $recipeBookPageNav[0].className = 'container page';
   $recipeBookPageNav[1].className = 'container page hidden';
   $recipeBookPageNav[2].className = 'container page hidden';
+  $recipeBookPageNav[3].className = 'container page hidden';
 }
 
 // Open View Saved Recipe page and populate values
@@ -478,7 +484,7 @@ $savedRecipesList.addEventListener('click', function openOptionsMenu(event) {
   }
 })
 
-$returnButton.addEventListener('click', function () {
+$returnSavedButton.addEventListener('click', function () {
   returnToRecipeBook();
   data.editing = null;
 })
@@ -799,17 +805,9 @@ function renderCreatedRecipes(newRecipe) {
   return listItem;
 }
 
-// Improve Options menu functionality
-// Link Recipe Book created recipes to a View Created Recipe Page(new page) and an Edit Recipe page(reformatted Create Recipe page)
-// Incorporate inputs functionality from notes in Notes app
-
 $createRecipeHeader = document.querySelector('#create-recipe-form h1');
-console.log($createRecipeHeader.textContent);
 
 $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
-  // while ($editRecipeIngredients.firstChild) {
-  //   $editRecipeIngredients.removeChild($editRecipeIngredients.firstChild);
-  // }
   for (var i = 0; i < data.createdRecipes.length; i++) {
     if (String(data.createdRecipes[i].createdRecipeId) === event.target.dataset.entryId) {
       data.editing = data.createdRecipes[i];
@@ -848,5 +846,53 @@ $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
     }
     createRecipeNav();
     returnToRecipeBook();
+  }
+})
+
+var $createdRecipeHeading = document.querySelector('.view-created-recipe-wrapper h1');
+var $createdRecipeIngredients = document.getElementById('view-created-recipe-ingredients-list');
+var $createdRecipeDirections = document.getElementById('view-created-recipe-directions-list');
+var $createdRecipeImage = document.querySelector('.view-created-recipe-wrapper img');
+var $returnCreatedButton = document.querySelector('.return-created-button');
+
+$returnCreatedButton.addEventListener('click', function () {
+  returnToRecipeBook();
+  data.editing = null;
+})
+
+// Open View Created Recipe page and populate values
+$createdRecipesList.addEventListener('click', function openCreatedRecipe(event) {
+  while ($createdRecipeIngredients.firstChild) {
+    $createdRecipeIngredients.removeChild($createdRecipeIngredients.firstChild);
+  }
+  while ($createdRecipeDirections.firstChild) {
+    $createdRecipeDirections.removeChild($createdRecipeDirections.firstChild);
+  }
+  for (var i = 0; i < data.createdRecipes.length; i++) {
+    if (String(data.createdRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
+      data.editing = data.createdRecipes[i];
+    }
+  }
+  if (event.target.matches('.created-recipe-image img') || event.target.matches('.created-recipe-title h2')) {
+    $createdRecipeHeading.textContent = data.editing.title;
+    $createdRecipeImage.alt = data.editing.title;
+    $createdRecipeImage.src = data.editing.photoUrl;
+    for (var n = 0; n < data.editing.ingredients.length; n++) {
+      var ingredient = document.createElement('li');
+      var ingredientText = document.createElement('p');
+      ingredientText.textContent = data.editing.ingredients[n];
+      ingredient.appendChild(ingredientText);
+      ingredient.className = 'ingredient';
+      $createdRecipeIngredients.appendChild(ingredient);
+    }
+    for (var m = 0; m < data.editing.directions.length; m++) {
+      var direction = document.createElement('li');
+      var directionText = document.createElement('p');
+      directionText.textContent = data.editing.directions[m];
+      direction.appendChild(directionText);
+      direction.className = 'direction';
+      $createdRecipeDirections.appendChild(direction);
+    }
+    viewCreatedRecipe();
   }
 })
