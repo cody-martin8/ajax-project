@@ -154,6 +154,15 @@ input:focus {
   display: flex;
 }
 
+.overlay {
+  background-color: rgb(0 0 0 / 60%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 button.clear-filters{
   border: none;
   text-decoration: underline;

@@ -8,12 +8,12 @@ var data = {
   nextCreatedRecipeId: 1
 };
 
-// var previousDataJSON = localStorage.getItem('recipes-local-storage');
-// if (previousDataJSON !== null) {
-//   data = JSON.parse(previousDataJSON);
-// }
+var previousDataJSON = localStorage.getItem('recipes-local-storage');
+if (previousDataJSON !== null) {
+  data = JSON.parse(previousDataJSON);
+}
 
-// window.addEventListener('beforeunload', function beforeUnload(event) {
-//   var dataJSON = JSON.stringify(data);
-//   localStorage.setItem('recipes-local-storage', dataJSON);
-// });
+window.addEventListener('beforeunload', function beforeUnload(event) {
+  var dataJSON = JSON.stringify(data);
+  localStorage.setItem('recipes-local-storage', dataJSON);
+});
