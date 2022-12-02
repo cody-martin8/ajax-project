@@ -1,17 +1,17 @@
-{/* <li class="search-result-item" data-entry-id="#">
-  <div class="list-row">
-    <div class="list-column">
-      <div class="search-result-image">
-        <a href="#"><img alt="bruschetta" src="https://imagesvc.meredithcorp.io/v3/"></a>
-      </div>
-      <div class="search-result-title">
-        <a href="#"><h2>Bruschetta</h2></a>
-      </div>
-    </div>
-  </div>
-</li> */}
+// <li class="search-result-item" data-entry-id="#">
+//   <div class="list-row">
+//     <div class="list-column">
+//       <div class="search-result-image">
+//         <a href="#"><img alt="bruschetta" src="https://imagesvc.meredithcorp.io/v3/"></a>
+//       </div>
+//       <div class="search-result-title">
+//         <a href="#"><h2>Bruschetta</h2></a>
+//       </div>
+//     </div>
+//   </div>
+// </li>
 
-function renderSearchResults(response, searchId) {
+function renderSearchResults(response, searchId) { // eslint-disable-line no-unused-vars
   var listItem = document.createElement('li');
   listItem.className = 'search-result-item';
 
@@ -77,7 +77,7 @@ function renderSearchResults(response, searchId) {
 //   </div>
 // </li >
 
-function renderSavedRecipes(newRecipe) {
+function renderSavedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
   var listItem = document.createElement('li');
   listItem.className = 'saved-recipe';
 
@@ -168,7 +168,7 @@ function renderSavedRecipes(newRecipe) {
 }
 
 // Reference renderSavedRecipes for sample HTML structure
-function renderCreatedRecipes(newRecipe) {
+function renderCreatedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
   var listItem = document.createElement('li');
   listItem.className = 'created-recipe';
 
@@ -258,13 +258,11 @@ function renderCreatedRecipes(newRecipe) {
   return listItem;
 }
 
-{/*
-    <li>
-      <input required name="ingredient" type="text" class="ingredient create-recipe-input">
-    </li>
-*/}
+//    <li>
+//      <input required name="ingredient" type="text" class="ingredient create-recipe-input">
+//    </li>
 
-function renderIngrInput() {
+function renderIngrInput() { // eslint-disable-line no-unused-vars
   var listItem = document.createElement('li');
 
   var ingrInput = document.createElement('input');
@@ -278,13 +276,11 @@ function renderIngrInput() {
   return listItem;
 }
 
-{/*
-    <li>
-      <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
-    </li>
-*/}
+//    <li>
+//      <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
+//    </li>
 
-function renderDirInput() {
+function renderDirInput() { // eslint-disable-line no-unused-vars
   var listItem = document.createElement('li');
 
   var dirInput = document.createElement('textarea');
