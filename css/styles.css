@@ -4,6 +4,11 @@ body {
   width: 100%;
 }
 
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
 .container-header {
   background-color: rgb(118, 184, 95);
   padding-top: 15px;
@@ -52,7 +57,6 @@ h1 {
   padding: 8px 10px;
   border: solid 1px rgb(194, 194, 194);
   border-radius: 5px;
-  /* margin-top: 15px; */
 }
 
 input:focus {
@@ -87,7 +91,6 @@ input:focus {
   height: 300px;
   border-radius: 8px;
   object-fit: cover;
-  object-position: center;
 }
 
 .search-result-title h2,
@@ -161,6 +164,24 @@ input:focus {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.delete-recipe-modal-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.delete-recipe-modal {
+  width: 450px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 button.clear-filters{

@@ -1,6 +1,3 @@
-/* global renderSavedRecipes, renderCreatedRecipes, renderSearchResults, renderIngrInput, renderDirInput */
-/* eslint no-undef: "error" */
-
 // Navigation functions
 
 var $pages = document.querySelectorAll('main > .page');
@@ -87,9 +84,31 @@ $createRecipeNav.addEventListener('click', function () {
 
 // Upon page reload (local storage)
 
+function retrieveRecipes(recipeId, savedRecipeId) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.edamam.com/api/recipes/v2/' + recipeId + '?type=public&app_id=25ee5a1c&app_key=2e0d886c58ffcac239ddf7ae29b2d302');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.status); // eslint-disable-line no-console
+    console.log(xhr.response); // eslint-disable-line no-console
+    const newRecipe = xhr.response;
+    newRecipe.savedRecipeId = savedRecipeId;
+    $savedRecipesList.appendChild(renderSavedRecipes(newRecipe));
+    for (var i = 0; i < data.savedRecipes.length; i++) {
+      if (data.savedRecipes[i].savedRecipeId === newRecipe.savedRecipeId) {
+        data.savedRecipes[i].recipe.image = newRecipe.recipe.image;
+      }
+    }
+  });
+  xhr.send();
+}
+
 window.addEventListener('DOMContentLoaded', function loadJournal() {
+  console.log(data);
   for (let i = 0; i < data.savedRecipes.length; i++) {
-    $savedRecipesList.appendChild(renderSavedRecipes(data.savedRecipes[i]));
+    const recipeId = data.savedRecipes[i].recipe.uri.split('_');
+    const savedRecipeId = data.savedRecipes[i].savedRecipeId;
+    retrieveRecipes(recipeId[1], savedRecipeId);
   }
 
   for (let i = 0; i < data.createdRecipes.length; i++) {
@@ -322,7 +341,7 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
   }
 });
 
-// Open (if and else if statement) and Close (else statement) Options Menu
+// Open and Close Options Menu
 $savedRecipesList.addEventListener('click', function openOptionsMenu(event) {
   event.preventDefault();
   for (var i = 1; i - 1 < data.savedRecipes.length; i++) {
@@ -346,6 +365,12 @@ $returnSavedButton.addEventListener('click', function () {
 });
 
 // Open Add Notes page from Options Menu and populate values
+
+var $body = document.body;
+var $overlay = document.querySelector('.overlay');
+var $deleteRecipeModalWrapper = document.querySelector('.delete-recipe-modal-wrapper');
+var $deleteRecipeModal = document.querySelector('.delete-recipe-modal');
+
 $savedRecipesList.addEventListener('click', function openAddNotes(event) {
   for (var i = 0; i < data.savedRecipes.length; i++) {
     if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
@@ -374,10 +399,38 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
     notesPageNav();
   }
   if (event.target.matches('.delete-button')) {
-    console.log('Delete Recipe'); // eslint-disable-line no-console
+    let deleteRecipe;
+    for (var i = 0; i < data.savedRecipes.length; i++) {
+      if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
+        deleteRecipe = data.savedRecipes[i];
+        console.log('Found a match!');
+      }
+    }
+    console.log('Delete Recipe', event.target.dataset.entryId);
+    console.log('This Recipe: ', deleteRecipe.savedRecipeId);
+    const savedRecipes = $savedRecipesList.children;
+    for (let i = 0; i < savedRecipes.length; i++) {
+      savedRecipes[i].firstChild.firstChild.className = 'list-column';
+    }
+    $body.className = 'modal-open';
+    $overlay.className = 'overlay';
+    $deleteRecipeModalWrapper.className = 'delete-recipe-modal-wrapper';
+    $deleteRecipeModal.className = 'delete-recipe-modal';
     // To be used in Issue 6
   }
 });
+
+var $cancelButton = document.querySelector('.cancel-button');
+$cancelButton.addEventListener('click', function closeModal(event) {
+  const savedRecipes = $savedRecipesList.children;
+  for (let i = 0; i < savedRecipes.length; i++) {
+    savedRecipes[i].firstChild.firstChild.className = 'list-column relative';
+  }
+  $body.className = '';
+  $overlay.className = 'overlay hidden';
+  $deleteRecipeModalWrapper.className = 'delete-recipe-modal-wrapper hidden';
+  $deleteRecipeModal.className = 'delete-recipe-modal hidden';
+})
 
 $saveNotes.addEventListener('click', function saveNotes() {
   data.editing.notes = $notesArea.value;
@@ -565,7 +618,7 @@ $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
     returnToRecipeBook();
   }
   if (event.target.matches('.delete-button')) {
-    console.log('Delete this recipe!'); // eslint-disable-line no-console
+    console.log('Delete this recipe!');
   }
 });
 

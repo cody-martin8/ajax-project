@@ -11,7 +11,7 @@
 //   </div>
 // </li>
 
-function renderSearchResults(response, searchId) { // eslint-disable-line no-unused-vars
+function renderSearchResults(response, searchId) {
   var listItem = document.createElement('li');
   listItem.className = 'search-result-item';
 
@@ -77,7 +77,7 @@ function renderSearchResults(response, searchId) { // eslint-disable-line no-unu
 //   </div>
 // </li >
 
-function renderSavedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
+function renderSavedRecipes(newRecipe) {
   var listItem = document.createElement('li');
   listItem.className = 'saved-recipe';
 
@@ -168,7 +168,7 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
 }
 
 // Reference renderSavedRecipes for sample HTML structure
-function renderCreatedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
+function renderCreatedRecipes(newRecipe) {
   var listItem = document.createElement('li');
   listItem.className = 'created-recipe';
 
@@ -262,7 +262,7 @@ function renderCreatedRecipes(newRecipe) { // eslint-disable-line no-unused-vars
 //      <input required name="ingredient" type="text" class="ingredient create-recipe-input">
 //    </li>
 
-function renderIngrInput() { // eslint-disable-line no-unused-vars
+function renderIngrInput() {
   var listItem = document.createElement('li');
 
   var ingrInput = document.createElement('input');
@@ -280,7 +280,7 @@ function renderIngrInput() { // eslint-disable-line no-unused-vars
 //      <textarea name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
 //    </li>
 
-function renderDirInput() { // eslint-disable-line no-unused-vars
+function renderDirInput() {
   var listItem = document.createElement('li');
 
   var dirInput = document.createElement('textarea');
