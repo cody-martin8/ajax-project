@@ -377,6 +377,8 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
       data.editing = data.savedRecipes[i];
     }
   }
+
+  // Add Notes Button for Saved Recipes
   if (event.target.matches('.notes-button')) {
     while ($addNotesIngredients.firstChild) {
       $addNotesIngredients.removeChild($addNotesIngredients.firstChild);
@@ -398,16 +400,14 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
     }
     notesPageNav();
   }
+
+  // Delete Button for Saved Recipes
   if (event.target.matches('.delete-button')) {
-    let deleteRecipe;
     for (var i = 0; i < data.savedRecipes.length; i++) {
       if (String(data.savedRecipes[i].savedRecipeId) === event.target.dataset.entryId) {
-        deleteRecipe = data.savedRecipes[i];
-        console.log('Found a match!');
+        data.editing = data.savedRecipes[i];
       }
     }
-    console.log('Delete Recipe', event.target.dataset.entryId);
-    console.log('This Recipe: ', deleteRecipe.savedRecipeId);
     const savedRecipes = $savedRecipesList.children;
     for (let i = 0; i < savedRecipes.length; i++) {
       savedRecipes[i].firstChild.firstChild.className = 'list-column';
@@ -416,12 +416,26 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
     $overlay.className = 'overlay';
     $deleteRecipeModalWrapper.className = 'delete-recipe-modal-wrapper';
     $deleteRecipeModal.className = 'delete-recipe-modal';
-    // To be used in Issue 6
   }
 });
 
-var $cancelButton = document.querySelector('.cancel-button');
-$cancelButton.addEventListener('click', function closeModal(event) {
+function confirmDelete() {
+  for (let i = 0; i < data.savedRecipes.length; i++) {
+    if (data.editing.savedRecipeId === data.savedRecipes[i].savedRecipeId) {
+      data.savedRecipes.splice(i, 1);
+    }
+  }
+  const savedRecipe = document.querySelectorAll('li.saved-recipe');
+  for (let i = 0; i < savedRecipe.length; i++) {
+    if (String(data.editing.savedRecipeId) === savedRecipe[i].firstChild.firstChild.firstChild.firstChild.firstChild.dataset.entryId) {
+      savedRecipe[i].remove();
+    }
+  }
+  data.editing = null;
+  closeModal();
+}
+
+function closeModal() {
   const savedRecipes = $savedRecipesList.children;
   for (let i = 0; i < savedRecipes.length; i++) {
     savedRecipes[i].firstChild.firstChild.className = 'list-column relative';
@@ -430,7 +444,13 @@ $cancelButton.addEventListener('click', function closeModal(event) {
   $overlay.className = 'overlay hidden';
   $deleteRecipeModalWrapper.className = 'delete-recipe-modal-wrapper hidden';
   $deleteRecipeModal.className = 'delete-recipe-modal hidden';
-})
+}
+
+const $confirmDeleteButton = document.querySelector('.confirm-delete-button');
+$confirmDeleteButton.addEventListener('click', confirmDelete);
+
+const $cancelButton = document.querySelector('.cancel-button');
+$cancelButton.addEventListener('click', closeModal);
 
 $saveNotes.addEventListener('click', function saveNotes() {
   data.editing.notes = $notesArea.value;
@@ -577,12 +597,17 @@ $cancelRecipeButton.addEventListener('click', function cancelRecipe() {
   recipeBookNav();
 });
 
+var $deleteCreatedRecipeModalWrapper = document.querySelector('.delete-created-recipe-modal-wrapper');
+var $deleteCreatedRecipeModal = document.querySelector('.delete-created-recipe-modal');
+
 $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
   for (var i = 0; i < data.createdRecipes.length; i++) {
     if (String(data.createdRecipes[i].createdRecipeId) === event.target.dataset.entryId) {
       data.editing = data.createdRecipes[i];
     }
   }
+
+  // Edit Button for Created Recipes
   if (event.target.matches('.edit-button')) {
     $createRecipeHeader.textContent = 'Edit Recipe';
     $createRecipeImage.alt = data.editing.title;
@@ -617,10 +642,57 @@ $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
     createRecipeNav();
     returnToRecipeBook();
   }
+
+  // Delete Button for Created Recipes
   if (event.target.matches('.delete-button')) {
-    console.log('Delete this recipe!');
+    for (var i = 0; i < data.createdRecipes.length; i++) {
+      if (String(data.createdRecipes[i].createdRecipeId) === event.target.dataset.entryId) {
+        data.editing = data.createdRecipes[i];
+      }
+    }
+    const createdRecipes = $createdRecipesList.children;
+    for (let i = 0; i < createdRecipes.length; i++) {
+      createdRecipes[i].firstChild.firstChild.className = 'list-column';
+    }
+    $body.className = 'modal-open';
+    $overlay.className = 'overlay';
+    $deleteCreatedRecipeModalWrapper.className = 'delete-created-recipe-modal-wrapper';
+    $deleteCreatedRecipeModal.className = 'delete-created-recipe-modal';
   }
 });
+
+function confirmCreatedRecipeDelete() {
+  for (let i = 0; i < data.createdRecipes.length; i++) {
+    if (data.editing.createdRecipeId === data.createdRecipes[i].createdRecipeId) {
+      data.createdRecipes.splice(i, 1);
+    }
+  }
+  const createdRecipe = document.querySelectorAll('li.created-recipe');
+  for (let i = 0; i < createdRecipe.length; i++) {
+    if (String(data.editing.createdRecipeId) === createdRecipe[i].firstChild.firstChild.firstChild.firstChild.firstChild.dataset.entryId) {
+      createdRecipe[i].remove();
+    }
+  }
+  data.editing = null;
+  closeCreatedRecipeModal();
+}
+
+function closeCreatedRecipeModal() {
+  const createdRecipes = $createdRecipesList.children;
+  for (let i = 0; i < createdRecipes.length; i++) {
+    createdRecipes[i].firstChild.firstChild.className = 'list-column relative';
+  }
+  $body.className = '';
+  $overlay.className = 'overlay hidden';
+  $deleteCreatedRecipeModalWrapper.className = 'delete-created-recipe-modal-wrapper hidden';
+  $deleteCreatedRecipeModal.className = 'delete-created-recipe-modal hidden';
+}
+
+const $confirmDeleteButtonCreatedRecipe = document.querySelector('.confirm-delete-button-created-recipe');
+$confirmDeleteButtonCreatedRecipe.addEventListener('click', confirmCreatedRecipeDelete);
+
+const $cancelButtonCreatedRecipe = document.querySelector('.cancel-button-created-recipe');
+$cancelButtonCreatedRecipe.addEventListener('click', closeCreatedRecipeModal);
 
 var $createdRecipeHeading = document.querySelector('.view-created-recipe-wrapper h1');
 var $createdRecipeIngredients = document.getElementById('view-created-recipe-ingredients-list');
