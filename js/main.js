@@ -104,7 +104,6 @@ function retrieveRecipes(recipeId, savedRecipeId) {
 }
 
 window.addEventListener('DOMContentLoaded', function loadJournal() {
-  console.log(data);
   for (let i = 0; i < data.savedRecipes.length; i++) {
     const recipeId = data.savedRecipes[i].recipe.uri.split('_');
     const savedRecipeId = data.savedRecipes[i].savedRecipeId;

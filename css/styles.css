@@ -2,11 +2,20 @@ body {
   background-color: rgb(238, 238, 238);
   position: relative;
   width: 100%;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 body.modal-open {
   overflow: hidden;
   position: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif', serif;
+}
+
+button, textarea, input {
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .container-header {
@@ -18,37 +27,27 @@ body.modal-open {
 .container-header h2 {
   color: white;
   margin: 0;
-  font-family: sans-serif;
-  font-weight: 300;
 }
 
 .column-header a {
   color: white;
   font-size: 1.15rem;
-  font-family: sans-serif;
   margin-left: 45px;
   text-decoration: none;
 }
 
 .page-header h1 {
-  font-family: sans-serif;
   font-size: 28px;
-}
-
-h1 {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .filter-navigation a {
   text-decoration: none;
-  font-family: sans-serif;
-  font-weight: 300;
   color: rgb(118, 184, 95);
   font-size: 16px;
 }
 
 .filter-navigation {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .query-text {
@@ -93,12 +92,19 @@ input:focus {
   object-fit: cover;
 }
 
-.search-result-title h2,
 .saved-recipe-title h2,
 .created-recipe-title h2 {
-  width: 300px;
+  width: 290px;
   display: inline-block;
-  font-family: sans-serif;
+  font-weight: medium;
+  font-size: 28px;
+  text-decoration: none;
+  color: black;
+  margin: 15px 0 40px 15px;
+}
+
+.search-result-title h2 {
+  display: inline-block;
   font-weight: medium;
   font-size: 28px;
   text-decoration: none;
@@ -158,7 +164,7 @@ input:focus {
 }
 
 .overlay {
-  background-color: rgb(0 0 0 / 60%);
+  background-color: rgb(0 0 0 / 35%);
   position: absolute;
   top: 0;
   left: 0;
@@ -172,16 +178,17 @@ input:focus {
 }
 
 .delete-recipe-modal {
-  width: 450px;
-  height: 200px;
+  width: 90%;
+  height: 225px;
   background-color: white;
   border-radius: 5px;
+  margin: auto;
+  border: 1px solid gray;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
 }
 
 .delete-created-recipe-modal-wrapper {
@@ -190,25 +197,36 @@ input:focus {
 }
 
 .delete-created-recipe-modal {
-  width: 450px;
-  height: 200px;
+  width: 90%;
+  height: 225px;
   background-color: white;
   border-radius: 5px;
+  margin: auto;
+  border: 1px solid gray;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
+}
+
+.modal-header h3 {
+  margin: 20px 15px 0;
+}
+
+.modal-text {
+  margin: 30px 20px;
+  font-size: large;
+}
+
+.modal-buttons {
+  margin: 35px 25px 0;
 }
 
 button.clear-filters{
   border: none;
   text-decoration: underline;
-  font-family: sans-serif;
-  font-weight: 300;
   color: rgb(118, 184, 95);
-  font-size: 14px;
 }
 
 button:hover {
@@ -217,7 +235,6 @@ button:hover {
 
 label {
   font-size: 20px;
-  font-family: sans-serif;
 }
 
 select {
@@ -289,7 +306,7 @@ select {
 }
 
 .options-icon {
-  margin: 21px 15px 40px 32px;
+  margin: 21px 15px 40px 0;
 }
 
 .options-menu {
@@ -308,8 +325,7 @@ select {
 }
 
 .options-menu p {
-  margin: 11px;
-  font-family: sans-serif;
+  margin: 0 8px 9px;
   font-weight: bold;
 }
 
@@ -379,7 +395,7 @@ select {
 }
 
 .margin-bottom-sm {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .margin-left {
@@ -439,6 +455,28 @@ select {
   width: 45%;
   }
 
+  .saved-recipe-title h2,
+  .created-recipe-title h2 {
+    width: 290px;
+  }
+
+  .options-icon {
+    margin: 21px 15px 40px 32px;
+  }
+
+  .delete-recipe-modal {
+    width: 450px;
+  }
+
+  .delete-created-recipe-modal {
+    width: 450px;
+  }
+
+.modal-text {
+  margin: 30px 30px;
+  font-size: large;
+}
+
   .new-recipe-image,
   .add-notes-image,
   .view-saved-recipe-image {
@@ -482,7 +520,7 @@ select {
   }
 
   .filter-navigation {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
 
   .filter-navigation a {
