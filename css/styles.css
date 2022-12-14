@@ -2,7 +2,7 @@ body {
   background-color: rgb(238, 238, 238);
   position: relative;
   width: 100%;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 body.modal-open {
@@ -10,12 +10,19 @@ body.modal-open {
   position: fixed;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Noto Serif', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Serif", serif;
 }
 
-button, textarea, input {
-  font-family: 'Noto Sans', sans-serif;
+button,
+textarea,
+input {
+  font-family: "Noto Sans", sans-serif;
 }
 
 .container-header {
@@ -223,7 +230,7 @@ input:focus {
   margin: 35px 25px 0;
 }
 
-button.clear-filters{
+button.clear-filters {
   border: none;
   text-decoration: underline;
   color: rgb(118, 184, 95);
@@ -245,7 +252,7 @@ select {
 .filter-dropdown {
   font-size: 20px;
   width: 50%;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 20px;
 }
 
 .button-row {
@@ -290,7 +297,7 @@ select {
 
 .off-green-button {
   border: none;
-  background-color: rgb(161,188,152);
+  background-color: rgb(161, 188, 152);
   color: white;
   padding: 7px 13px;
   font-size: 18px;
@@ -313,7 +320,7 @@ select {
   position: absolute;
   top: 245px;
   right: 7px;
-  border: solid 2px rgb(161,188,152);
+  border: solid 2px rgb(161, 188, 152);
   background-color: white;
   border-radius: 10px;
   width: 95px;
@@ -364,12 +371,12 @@ select {
 .add-directions-input,
 .remove-ingredient-input,
 .remove-directions-input {
-  color:rgb(118, 184, 95);
+  color: rgb(118, 184, 95);
   margin: 5px 0;
 }
 
 .theme-font-color {
-  color: rgb(161,188,152);
+  color: rgb(161, 188, 152);
 }
 
 .warning-font-color {
@@ -445,14 +452,14 @@ select {
   }
 
   .query-text {
-  width: 50%;
-  font-size: 24px;
+    width: 50%;
+    font-size: 24px;
   }
 
   .search-result-item,
   .saved-recipe,
   .created-recipe {
-  width: 45%;
+    width: 45%;
   }
 
   .saved-recipe-title h2,
@@ -472,10 +479,10 @@ select {
     width: 450px;
   }
 
-.modal-text {
-  margin: 30px 30px;
-  font-size: large;
-}
+  .modal-text {
+    margin: 30px;
+    font-size: large;
+  }
 
   .new-recipe-image,
   .add-notes-image,
@@ -542,3 +549,4 @@ select {
   .margin-right {
     margin-right: 20px;
   }
+}
