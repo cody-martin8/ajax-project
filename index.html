@@ -11,6 +11,11 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -45,7 +50,7 @@
                 type="text"
                 class="query-text"
                 placeholder="Chicken, pasta, burgers, etc.">
-                <button class="search-button">Search</button>
+              <button class="search-button">Search</button>
             </div>
             <div class="filter-navigation">
               <a href="#">Filter</a>
@@ -178,7 +183,7 @@
     </div>
 
     <!-- Create Recipe Page -->
-    <div class="page" data-view="create-recipe-page">
+    <div class="page hidden" data-view="create-recipe-page">
       <form id="create-recipe-form">
         <div class="container">
           <div class="row page-header">
@@ -200,8 +205,8 @@
             </div>
             <div class="create-recipe-column-b margin-bottom">
               <div class="create-ingredients">
+                <label for="create-ingredients" class="block">Ingredients</label>
                 <ul class="create-ingredients-list" id="create-ingredients-list">
-                  <label for="create-ingredients" class="block">Ingredients</label>
                   <li>
                     <input required name="ingredient" type="text" class="ingredient create-recipe-input">
                   </li>
@@ -224,8 +229,8 @@
                 </div>
               </div>
               <div class="create-directions">
+                <label for="create-directions" class="block">Directions</label>
                 <ul class="create-directions-list" id="create-directions-list">
-                  <label for="create-directions" class="block">Directions</label>
                   <li>
                     <textarea required name="directions" rows="7" class="directions create-recipe-textarea"></textarea>
                   </li>
@@ -254,9 +259,10 @@
     </div>
 
     <!-- Recipe Book page -->
-    <div class="page hidden" data-view="recipe-book">
+    <div class="page" data-view="recipe-book">
       <div class="container page">
-        <div class="row page-header margin-bottom">
+        <div class="overlay hidden"></div>
+        <div class="row page-header margin-bottom-sm">
           <div class="column">
             <h1>Recipe Book</h1>
             <div class="button-row align-right">
@@ -275,6 +281,22 @@
           <ul class="flex-wrap" id="saved-recipes-list">
           </ul>
         </div>
+        <div class="delete-recipe-modal-wrapper hidden">
+          <div class="delete-recipe-modal hidden">
+            <div class="modal-header">
+              <h3>Remove Recipe</h3>
+            </div>
+            <div class="modal-text">
+              <p>
+                Are you sure you want to remove this recipe from your Recipe Book?
+              </p>
+            </div>
+            <div class="modal-buttons flex-space-between">
+              <button type="button" class="cancel-button white-button">Cancel</button>
+              <button type="button" class="confirm-delete-button orange-button">Confirm</button>
+            </div>
+          </div>
+        </div>
 
         <!-- Created Recipes List on Recipe Book page -->
         <div class="row tab hidden" data-view="created-recipes-page">
@@ -284,6 +306,22 @@
           </div>
           <ul class="flex-wrap" id="created-recipes-list">
           </ul>
+        </div>
+        <div class="delete-created-recipe-modal-wrapper hidden">
+          <div class="delete-created-recipe-modal hidden">
+            <div class="modal-header">
+              <h3>Remove Recipe</h3>
+            </div>
+            <div class="modal-text">
+              <p>
+                Are you sure you want to remove this recipe from your Recipe Book?
+              </p>
+            </div>
+            <div class="modal-buttons flex-space-between">
+              <button type="button" class="cancel-button-created-recipe white-button">Cancel</button>
+              <button type="button" class="confirm-delete-button-created-recipe orange-button">Confirm</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -378,8 +416,8 @@
               <div class="view-created-recipe-directions margin-bottom">
                 <div class="directions-list">
                   <h3>Directions</h3>
-                  <ul class="padding-left margin-zero" id="view-created-recipe-directions-list">
-                  </ul>
+                  <ol class="padding-left margin-zero" id="view-created-recipe-directions-list">
+                  </ol>
                 </div>
               </div>
             </div>
@@ -392,6 +430,7 @@
 
     </div>
   </main>
+  <script src="js/render.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -2,6 +2,27 @@ body {
   background-color: rgb(238, 238, 238);
   position: relative;
   width: 100%;
+  font-family: "Noto Sans", sans-serif;
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Serif", serif;
+}
+
+button,
+textarea,
+input {
+  font-family: "Noto Sans", sans-serif;
 }
 
 .container-header {
@@ -13,37 +34,27 @@ body {
 .container-header h2 {
   color: white;
   margin: 0;
-  font-family: sans-serif;
-  font-weight: 300;
 }
 
 .column-header a {
   color: white;
   font-size: 1.15rem;
-  font-family: sans-serif;
   margin-left: 45px;
   text-decoration: none;
 }
 
 .page-header h1 {
-  font-family: sans-serif;
   font-size: 28px;
-}
-
-h1 {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .filter-navigation a {
   text-decoration: none;
-  font-family: sans-serif;
-  font-weight: 300;
   color: rgb(118, 184, 95);
   font-size: 16px;
 }
 
 .filter-navigation {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .query-text {
@@ -52,7 +63,6 @@ h1 {
   padding: 8px 10px;
   border: solid 1px rgb(194, 194, 194);
   border-radius: 5px;
-  /* margin-top: 15px; */
 }
 
 input:focus {
@@ -87,15 +97,21 @@ input:focus {
   height: 300px;
   border-radius: 8px;
   object-fit: cover;
-  object-position: center;
 }
 
-.search-result-title h2,
 .saved-recipe-title h2,
 .created-recipe-title h2 {
-  width: 300px;
+  width: 290px;
   display: inline-block;
-  font-family: sans-serif;
+  font-weight: medium;
+  font-size: 28px;
+  text-decoration: none;
+  color: black;
+  margin: 15px 0 40px 15px;
+}
+
+.search-result-title h2 {
+  display: inline-block;
   font-weight: medium;
   font-size: 28px;
   text-decoration: none;
@@ -154,13 +170,70 @@ input:focus {
   display: flex;
 }
 
-button.clear-filters{
+.overlay {
+  background-color: rgb(0 0 0 / 35%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.delete-recipe-modal-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.delete-recipe-modal {
+  width: 90%;
+  height: 225px;
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  border: 1px solid gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.delete-created-recipe-modal-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.delete-created-recipe-modal {
+  width: 90%;
+  height: 225px;
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  border: 1px solid gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-header h3 {
+  margin: 20px 15px 0;
+}
+
+.modal-text {
+  margin: 30px 20px;
+  font-size: large;
+}
+
+.modal-buttons {
+  margin: 35px 25px 0;
+}
+
+button.clear-filters {
   border: none;
   text-decoration: underline;
-  font-family: sans-serif;
-  font-weight: 300;
   color: rgb(118, 184, 95);
-  font-size: 14px;
 }
 
 button:hover {
@@ -169,7 +242,6 @@ button:hover {
 
 label {
   font-size: 20px;
-  font-family: sans-serif;
 }
 
 select {
@@ -180,7 +252,7 @@ select {
 .filter-dropdown {
   font-size: 20px;
   width: 50%;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 20px;
 }
 
 .button-row {
@@ -225,7 +297,7 @@ select {
 
 .off-green-button {
   border: none;
-  background-color: rgb(161,188,152);
+  background-color: rgb(161, 188, 152);
   color: white;
   padding: 7px 13px;
   font-size: 18px;
@@ -241,14 +313,14 @@ select {
 }
 
 .options-icon {
-  margin: 21px 15px 40px 32px;
+  margin: 21px 15px 40px 0;
 }
 
 .options-menu {
   position: absolute;
   top: 245px;
   right: 7px;
-  border: solid 2px rgb(161,188,152);
+  border: solid 2px rgb(161, 188, 152);
   background-color: white;
   border-radius: 10px;
   width: 95px;
@@ -260,8 +332,7 @@ select {
 }
 
 .options-menu p {
-  margin: 11px;
-  font-family: sans-serif;
+  margin: 0 8px 9px;
   font-weight: bold;
 }
 
@@ -300,12 +371,12 @@ select {
 .add-directions-input,
 .remove-ingredient-input,
 .remove-directions-input {
-  color:rgb(118, 184, 95);
+  color: rgb(118, 184, 95);
   margin: 5px 0;
 }
 
 .theme-font-color {
-  color: rgb(161,188,152);
+  color: rgb(161, 188, 152);
 }
 
 .warning-font-color {
@@ -331,7 +402,7 @@ select {
 }
 
 .margin-bottom-sm {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .margin-left {
@@ -381,14 +452,36 @@ select {
   }
 
   .query-text {
-  width: 50%;
-  font-size: 24px;
+    width: 50%;
+    font-size: 24px;
   }
 
   .search-result-item,
   .saved-recipe,
   .created-recipe {
-  width: 45%;
+    width: 45%;
+  }
+
+  .saved-recipe-title h2,
+  .created-recipe-title h2 {
+    width: 290px;
+  }
+
+  .options-icon {
+    margin: 21px 15px 40px 32px;
+  }
+
+  .delete-recipe-modal {
+    width: 450px;
+  }
+
+  .delete-created-recipe-modal {
+    width: 450px;
+  }
+
+  .modal-text {
+    margin: 30px;
+    font-size: large;
   }
 
   .new-recipe-image,
@@ -434,7 +527,7 @@ select {
   }
 
   .filter-navigation {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
 
   .filter-navigation a {
@@ -456,3 +549,4 @@ select {
   .margin-right {
     margin-right: 20px;
   }
+}
