@@ -264,7 +264,7 @@ const $addNotesLink = document.querySelector('.add-notes-wrapper a');
 const $addNotesIngredients = document.getElementById('add-notes-ingredients-list');
 
 const $notesArea = document.querySelector('.notes');
-const $saveNotes = document.querySelector('.save-notes-button');
+const $saveNotes = document.querySelector('.save-notes-form');
 const $cancelNotes = document.querySelector('.cancel-notes-button');
 
 const $savedRecipeHeading = document.querySelector('.view-saved-recipe-wrapper h1');
@@ -437,7 +437,7 @@ $confirmDeleteButton.addEventListener('click', confirmDelete);
 const $cancelButton = document.querySelector('.cancel-button');
 $cancelButton.addEventListener('click', closeModal);
 
-$saveNotes.addEventListener('click', function saveNotes() {
+$saveNotes.addEventListener('submit', function saveNotes() {
   data.editing.notes = $notesArea.value;
   for (let i = 0; i < data.savedRecipes.length; i++) {
     if (data.savedRecipes[i].savedRecipeId === data.editing.savedRecipeId) {

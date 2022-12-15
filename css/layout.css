@@ -29,18 +29,9 @@ body {
   justify-content: flex-end;
 }
 
-.justify-left {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .align-right {
   display: flex;
   justify-content: flex-end;
-}
-
-.flex {
-  display: flex;
 }
 
 .flex-center {
@@ -70,10 +61,6 @@ body {
 
   .search-bar {
     justify-content: start;
-  }
-
-  .column-half {
-    width: 45%;
   }
 
   .flex-full-screen {
