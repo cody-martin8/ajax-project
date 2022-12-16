@@ -105,6 +105,7 @@ function retrieveRecipes(recipeId, savedRecipeId) {
 
 window.addEventListener('DOMContentLoaded', function loadJournal() {
   for (let i = 0; i < data.savedRecipes.length; i++) {
+    // $savedRecipesList.appendChild(renderSavedRecipes(data.savedRecipes[i])); // eslint-disable-line
     const recipeId = data.savedRecipes[i].recipe.uri.split('_');
     const savedRecipeId = data.savedRecipes[i].savedRecipeId;
     retrieveRecipes(recipeId[1], savedRecipeId);
@@ -256,6 +257,17 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   $searchPage[0].className = 'container tab';
   $searchPage[2].className = 'container tab hidden';
 });
+
+// Clicking Return button
+
+const $returnToSearchButton = document.querySelector('.return-to-search-button');
+
+$returnToSearchButton.addEventListener('click', function returnToSearch() {
+  $searchPage[0].className = 'container tab';
+  $searchPage[2].className = 'container tab hidden';
+});
+
+// Recipe Book Navigation
 
 const $recipeBookPageNav = document.querySelectorAll('.container.page');
 const $addNotesHeading = document.querySelector('.add-notes-wrapper h1');

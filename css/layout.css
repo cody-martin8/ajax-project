@@ -40,7 +40,9 @@ body {
 }
 
 .flex-buttons,
-.flex-space-between {
+.flex-space-between,
+.create-recipe-button-row,
+.new-recipe-button-row {
   display: flex;
   justify-content: space-between;
 }
@@ -76,6 +78,15 @@ body {
 
   .flex-buttons {
     display: inline-block;
+  }
+
+  .create-recipe-button-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .new-recipe-button-row {
+    display: flex;
   }
 
   .query-text {
