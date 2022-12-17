@@ -149,7 +149,7 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line
 
   const notesText = document.createElement('p');
   notesText.className = 'notes-button theme-font-color';
-  notesText.textContent = 'Notes';
+  notesText.textContent = 'Add Notes';
   notesText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   notesLink.appendChild(notesText);
 
@@ -240,7 +240,7 @@ function renderCreatedRecipes(newRecipe) { // eslint-disable-line
 
   const editText = document.createElement('p');
   editText.className = 'edit-button theme-font-color';
-  editText.textContent = 'Edit';
+  editText.textContent = 'Edit Recipe';
   editText.setAttribute('data-entry-id', newRecipe.createdRecipeId);
   editLink.appendChild(editText);
 

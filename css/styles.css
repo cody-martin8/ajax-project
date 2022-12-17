@@ -3,6 +3,8 @@ body {
   position: relative;
   width: 100%;
   font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 body.modal-open {
@@ -17,6 +19,7 @@ h4,
 h5,
 h6 {
   font-family: "Noto Serif", serif;
+  line-height: 1.4;
 }
 
 h1 {
@@ -31,8 +34,8 @@ input {
 
 .container-header {
   background-color: rgb(118, 184, 95);
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .container-header h2 {
@@ -43,24 +46,26 @@ input {
 .column-header a {
   color: white;
   font-size: 1.15rem;
-  margin-left: 45px;
+  margin-left: 3rem;
   text-decoration: none;
 }
+
+/* Search Page */
 
 .filter-navigation a {
   text-decoration: none;
   color: rgb(118, 184, 95);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .filter-navigation {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .query-text {
   width: 70%;
-  font-size: 16px;
-  padding: 8px 10px;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
   border: solid 1px rgb(194, 194, 194);
   border-radius: 5px;
 }
@@ -70,17 +75,19 @@ input:focus {
 }
 
 .search-bar {
-  margin: 15px 0;
+  margin: 1rem 0;
 }
 
 .search-button {
   border: none;
   background-color: rgb(118, 184, 95);
   color: white;
-  padding: 9px 15px;
-  font-size: 16px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   border-radius: 5px;
 }
+
+/* Displaying Recipe Items */
 
 #search-result-list,
 #saved-recipes-list,
@@ -113,7 +120,7 @@ input:focus {
   font-size: 1.6rem;
   text-decoration: none;
   color: black;
-  margin: 10px 0 50px 15px;
+  margin: 0.75rem 0.25rem 3rem 0.75rem;
 }
 
 .search-result-title a,
@@ -122,6 +129,8 @@ input:focus {
   text-decoration: none;
   color: black;
 }
+
+/* Opening Recipe Items */
 
 .new-recipe-image,
 .add-notes-image,
@@ -147,7 +156,7 @@ input:focus {
 
 .ingredients-list,
 .created-recipe-ingredients-list {
-  padding: 0 10px;
+  padding: 0 0.75rem;
   border: solid 1px rgb(178, 206, 178);
   border-radius: 8px;
   background-color: rgb(201, 223, 194);
@@ -161,7 +170,7 @@ input:focus {
 
 .directions-list {
   width: 100%;
-  padding: 0 10px;
+  padding: 0 0.75rem;
   border: solid 1px rgb(187, 187, 187);
   border-radius: 8px;
   background-color: rgb(223, 223, 223);
@@ -169,7 +178,7 @@ input:focus {
 
 .ingredient p,
 .direction p {
-  margin: 10px 0;
+  margin: 0.75rem 0;
 }
 
 .view-saved-recipe-notes h2 {
@@ -183,11 +192,11 @@ input:focus {
 .notes {
   width: 100%;
   border: solid 1px lightgray;
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 
 .recipe-link {
-  font-size: 28px;
+  font-size: 1.75rem;
   display: flex;
   justify-content: center;
 }
@@ -196,6 +205,33 @@ input:focus {
   text-decoration: none;
   color: green;
 }
+
+/* Pop Up Menu for Saved/Created Recipe Items */
+
+.options-icon {
+  margin: 1rem 1rem 2.5rem 0.75rem;
+}
+
+.options-menu {
+  position: absolute;
+  top: 245px;
+  right: 7px;
+  border: solid 2px rgb(161, 188, 152);
+  background-color: white;
+  border-radius: 10px;
+  width: 95px;
+  height: 100px;
+}
+
+.options-menu a {
+  text-decoration: none;
+}
+
+.options-menu p {
+  margin: 0 0 0.5rem 0.25rem;
+}
+
+/* Pop Up for Deleting Recipes */
 
 .overlay {
   background-color: rgb(0 0 0 / 35%);
@@ -245,19 +281,22 @@ input:focus {
 }
 
 .modal-header h3 {
-  margin: 20px 15px 0;
+  margin: 1.25rem 1rem 0;
 }
 
 .modal-text {
-  margin: 30px 20px;
-  font-size: large;
+  margin: 2rem 1.25rem;
+  font-size: 1.1rem;
 }
 
 .modal-buttons {
-  margin: 35px 25px 0;
+  margin: 2.25rem 1.5rem 0;
 }
 
+/* Various Buttons/Inputs */
+
 button.clear-filters {
+  font-size: 1.1rem;
   border: none;
   text-decoration: underline;
   color: rgb(118, 184, 95);
@@ -268,7 +307,7 @@ button:hover {
 }
 
 label {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 select {
@@ -277,87 +316,59 @@ select {
 }
 
 .filter-dropdown {
-  font-size: 20px;
+  font-size: 1.25rem;
   width: 100%;
-  margin: 10px 0 20px;
+  margin: 0.75rem 0 1.25rem;
 }
 
-.save-filters-button {
-  border: none;
-  background-color: rgb(118, 184, 95);
-  color: white;
-  padding: 7px 13px;
-  font-size: 16px;
+.save-filters-button,
+.green-button,
+.white-button,
+.orange-button,
+.off-green-button {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.15rem;
   border-radius: 5px;
 }
 
+.save-filters-button,
 .green-button {
   border: none;
   background-color: rgb(118, 184, 95);
   color: white;
-  padding: 7px 13px;
-  font-size: 16px;
-  border-radius: 5px;
 }
 
 .white-button {
   border: solid 2px rgb(118, 184, 95);
   background-color: white;
   color: rgb(118, 184, 95);
-  padding: 7px 13px;
-  font-size: 16px;
-  border-radius: 5px;
 }
 
 .orange-button {
   border: none;
   background-color: rgb(212, 139, 54);
   color: white;
-  padding: 7px 13px;
-  font-size: 16px;
-  border-radius: 5px;
 }
 
 .off-green-button {
   border: none;
   background-color: rgb(161, 188, 152);
   color: white;
-  padding: 7px 13px;
-  font-size: 18px;
-  border-radius: 5px;
 }
 
 .off-green-button:hover {
   cursor: pointer;
 }
 
-.cancel-notes-button {
-  margin-left: 40px;
+.create-recipe-navigation {
+  margin-left: 1.25rem;
 }
 
-.options-icon {
-  margin: 21px 15px 40px 10px;
+.filter-row {
+  margin-top: 1.25rem;
 }
 
-.options-menu {
-  position: absolute;
-  top: 245px;
-  right: 7px;
-  border: solid 2px rgb(161, 188, 152);
-  background-color: white;
-  border-radius: 10px;
-  width: 95px;
-  height: 100px;
-}
-
-.options-menu a {
-  text-decoration: none;
-}
-
-.options-menu p {
-  margin: 0 8px 9px;
-  font-weight: bold;
-}
+/* Create Recipe Form */
 
 #create-directions-list > li,
 #create-ingredients-list > li {
@@ -373,21 +384,21 @@ select {
 .create-recipe-input {
   width: 100%;
   height: 2rem;
-  margin: 4px 0;
+  margin: 0.25rem 0;
   border-radius: 5px;
   border: solid 2px rgb(201, 223, 194);
 }
 
 .create-recipe-textarea {
   width: 100%;
-  margin: 4px 0;
+  margin: 0.25rem 0;
   border-radius: 5px;
   border: solid 2px rgb(201, 223, 194);
 }
 
 .create-recipe-title,
 .create-recipe-image-url {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .add-ingredient-input,
@@ -395,7 +406,7 @@ select {
 .remove-ingredient-input,
 .remove-directions-input {
   color: rgb(118, 184, 95);
-  margin: 5px 0;
+  margin: 0.25rem 0;
 }
 
 .theme-font-color {
@@ -406,60 +417,56 @@ select {
   color: rgb(212, 139, 54);
 }
 
-.create-recipe-navigation {
-  margin-left: 20px;
-}
+/* Various Margin/Padding Settings */
 
-.margin-zero {
+.margin-zero,
+.margin-offset {
   margin: 0;
 }
 
-.margin-center {
-  margin: 0;
-}
-
-.margin-center-five,
-.margin-center-five-mobile {
-  margin-left: 5%;
-  margin-right: 5%;
+.margin-center,
+.margin-center-mobile {
+  margin: auto;
 }
 
 .margin-bottom {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .margin-bottom-sm {
-  margin-bottom: 25px;
+  margin-bottom: 1.5rem;
 }
 
 .margin-left-small {
-  margin-left: 10px;
+  margin-left: 0.75rem;
 }
 
 .margin-left-large {
-  margin-left: 40px;
+  margin-left: 2.5rem;
 }
 
 .margin-right-large {
-  margin-right: 40px;
+  margin-right: 2.5rem;
 }
 
 .padding-right {
-  padding-top: 3px;
-  padding-right: 5px;
+  padding-top: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .padding-left {
-  padding-left: 25px;
+  padding-left: 1.5rem;
 }
 
 .padding-adjust {
-  padding: 9px 15px;
+  padding: 0.5rem 1rem;
 }
 
 .relative {
   position: relative;
 }
+
+/* For Large Screen Sizes */
 
 @media screen and (min-width: 768px) {
   body {
@@ -476,16 +483,12 @@ select {
 
   .query-text {
     width: 50%;
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .saved-recipe-title h2,
   .created-recipe-title h2 {
     width: 320px;
-  }
-
-  .options-icon {
-    margin: 21px 15px 40px 10px;
   }
 
   .delete-recipe-modal,
@@ -494,8 +497,8 @@ select {
   }
 
   .modal-text {
-    margin: 30px;
-    font-size: large;
+    margin: 2rem;
+    font-size: 1.1rem;
   }
 
   .new-recipe-image,
@@ -534,39 +537,35 @@ select {
   .return-saved-button,
   .return-created-button,
   .cancel-recipe-button {
-    font-size: 24px;
-  }
-
-  .cancel-notes-button {
-    margin-left: 110px;
+    font-size: 1.5rem;
   }
 
   .filter-navigation {
-    margin-bottom: 50px;
+    margin-bottom: 3rem;
   }
 
   .filter-navigation a {
-    font-size: 18px;
+    font-size: 1.25rem;
   }
 
   label {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .margin-left,
   .create-recipe-navigation {
-    margin-left: 30px;
+    margin-left: 2rem;
   }
 
-  .margin-center-five-mobile {
+  .margin-center-mobile {
     margin: 0;
   }
 
-  .margin-center {
+  .margin-offset {
     margin-left: 4rem;
   }
 
   .margin-right {
-    margin-right: 20px;
+    margin-right: 1.25rem;
   }
 }
