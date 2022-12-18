@@ -67,7 +67,7 @@
         <!-- Filter page for search form -->
         <div class="container tab hidden" data-view="filter-page">
           <div class="row page-header">
-            <div class="column button-row">
+            <div class="column filter-row">
               <h1>Filter</h1>
               <button type="button" class="clear-filters">Clear Filters</button>
             </div>
@@ -144,8 +144,8 @@
             </div>
           </div>
           <div class="row-filter">
-            <div class="column button-row">
-              <button type="button" class="save-filters-button green-button">Save</button>
+            <div class="column filter-row">
+              <button type="button" class="save-filters-button green-button">Save Filters</button>
               <button type="button" class="save-filters-button orange-button ">Return</button>
             </div>
           </div>
@@ -153,28 +153,24 @@
 
         <!-- Viewing New Recipe page from Search page -->
         <div class="container tab hidden" data-view="new-recipe-page">
-          <div class="row page-header">
-            <div class="column">
-              <h1>New Recipe</h1>
-            </div>
-          </div>
           <div class="new-recipe-wrapper">
             <div class="row">
               <div class="column">
                 <h1></h1>
               </div>
-              <div class="flex-wrap margin-bottom">
-                <img class="new-recipe-image" alt="" src="">
-                <div class="ingredients-list margin-center">
+              <div class="flex-wrap margin-bottom margin-offset">
+                <img class="new-recipe-image margin-bottom-sm" alt="" src="">
+                <div class="ingredients-list margin-center-mobile">
                   <ul class="padding-left margin-zero" id="new-recipe-ingredients-list">
                   </ul>
                 </div>
               </div>
-              <div class="recipe-link margin-bottom">
+              <div class="recipe-link margin-bottom margin-offset width-55">
                 <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
               </div>
-              <div class="flex-center">
+              <div class="flex-space-between margin-offset width-55">
                 <button type="button" class="save-recipe-button green-button margin-bottom">Save Recipe</button>
+                <button type="button" class="return-to-search-button orange-button margin-bottom">Return</button>
               </div>
             </div>
           </div>
@@ -203,7 +199,7 @@
                 <input required name="image-url" type="text" class="create-recipe-image-url create-recipe-input">
               </div>
             </div>
-            <div class="create-recipe-column-b margin-bottom">
+            <div class="create-recipe-column-b">
               <div class="create-ingredients">
                 <label for="create-ingredients" class="block">Ingredients</label>
                 <ul class="create-ingredients-list" id="create-ingredients-list">
@@ -228,7 +224,7 @@
                   <a href="#" class="remove-ingredient-input margin-left-small"><i class="fa-solid fa-minus fa-xl"></i></a>
                 </div>
               </div>
-              <div class="create-directions">
+              <div class="create-directions margin-bottom">
                 <label for="create-directions" class="block">Directions</label>
                 <ul class="create-directions-list" id="create-directions-list">
                   <li>
@@ -246,12 +242,10 @@
                   <a href="#" class="remove-directions-input margin-left-small"><i class="fa-solid fa-minus fa-xl"></i></a>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="justify-right">
-              <button class="save-recipe-button green-button margin-bottom margin-right-large">Save Recipe</button>
-              <button type="button" class="cancel-recipe-button orange-button margin-bottom margin-left-large">Cancel</button>
+              <div class="flex-space-between">
+                <button class="save-created-recipe-button green-button margin-bottom margin-right-large">Save Recipe</button>
+                <button type="button" class="cancel-recipe-button orange-button margin-bottom margin-left-large">Cancel</button>
+              </div>
             </div>
           </div>
         </div>
@@ -267,7 +261,7 @@
             <h1>Recipe Book</h1>
             <div class="button-row align-right">
               <button type="button" class="off-green-button search-navigation">Search</button>
-              <button type="button" class="off-green-button create-recipe-navigation margin-left">Create</button>
+              <button type="button" class="off-green-button create-recipe-navigation">Create</button>
             </div>
           </div>
         </div>
@@ -327,65 +321,57 @@
 
       <!-- Add Notes to Saved Recipe Page -->
       <div class="container page hidden" data-view="add-notes-page">
-        <div class="row page-header">
-          <div class="column">
-            <h1>Add Notes</h1>
-          </div>
-        </div>
         <div class="add-notes-wrapper">
-          <div class="row">
-            <div class="column">
-              <h1></h1>
-            </div>
-            <div class="flex-wrap margin-bottom">
-              <img class="add-notes-image" alt="" src="">
-              <div class="ingredients-list margin-center">
-                <ul class="padding-left margin-zero" id="add-notes-ingredients-list">
-                </ul>
+          <form class="save-notes-form">
+            <div class="row">
+              <div class="column">
+                <h1></h1>
+              </div>
+              <div class="flex-wrap margin-bottom margin-offset">
+                <img class="add-notes-image margin-bottom-sm" alt="" src="">
+                <div class="ingredients-list margin-center-mobile">
+                  <ul class="padding-left margin-zero" id="add-notes-ingredients-list">
+                  </ul>
+                </div>
+              </div>
+              <div class="add-notes margin-offset width-55">
+                <label for="notes" class="block">Notes</label>
+                <textarea name="notes" rows="7" class="notes margin-bottom" placeholder="Add notes here..."></textarea>
+              </div>
+              <div class="recipe-link margin-bottom margin-offset width-55">
+                <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+              </div>
+              <div class="flex-space-between margin-offset width-55">
+                <button type="submit" class="save-notes-button green-button margin-bottom">Save Notes</button>
+                <button type="button" class="cancel-notes-button orange-button margin-bottom">Cancel</button>
               </div>
             </div>
-            <div class="recipe-link margin-bottom">
-              <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
-            </div>
-            <div class="add-notes">
-              <label for="notes" class="block">Notes</label>
-              <textarea name="notes" rows="7" class="notes margin-bottom" placeholder="Add notes here..."></textarea>
-            </div>
-            <div class="flex-center">
-              <button type="button" class="save-notes-button green-button margin-bottom">Save Notes</button>
-              <button type="button" class="cancel-notes-button orange-button margin-bottom">Cancel</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
       <!-- View Saved Recipe Page -->
       <div class="container page hidden" data-view="view-saved-recipe-page">
-        <div class="row page-header">
-          <div class="column">
-            <h1>Saved Recipe</h1>
-          </div>
-        </div>
         <div class="view-saved-recipe-wrapper">
           <div class="row">
             <div class="column">
               <h1></h1>
             </div>
-            <div class="flex-wrap margin-bottom">
-              <img class="view-saved-recipe-image" alt="" src="">
-              <div class="ingredients-list margin-center">
+            <div class="flex-wrap margin-bottom margin-offset">
+              <img class="view-saved-recipe-image margin-bottom-sm" alt="" src="">
+              <div class="ingredients-list margin-center-mobile">
                 <ul class="padding-left margin-zero" id="view-saved-recipe-ingredients-list">
                 </ul>
               </div>
             </div>
-            <div class="view-saved-recipe-notes">
-              <h3>Recipe Notes</h3>
+            <div class="view-saved-recipe-notes margin-bottom margin-offset width-55">
+              <h2>Recipe Notes</h2>
               <p>Notes can be added here if there are any adjustments that you prefer with this recipe.</p>
             </div>
-            <div class="recipe-link margin-bottom">
-              <a href="">Link to Recipe <i class="fa-solid fa-arrow-right fa-med"></i></a>
+            <div class="recipe-link margin-bottom margin-offset width-55">
+              <a href=""><span>Link to Recipe </span><i class="fa-solid fa-arrow-right fa-med"></i></a>
             </div>
-            <div class="flex-center">
+            <div class="flex-center margin-offset width-55">
               <button type="button" class="return-saved-button orange-button margin-bottom">Return</button>
             </div>
           </div>
@@ -394,11 +380,6 @@
 
       <!-- View Created Recipe Page -->
       <div class="container page hidden" data-view="view-created-recipe-page">
-        <div class="row page-header">
-          <div class="column">
-            <h1>Created Recipe</h1>
-          </div>
-        </div>
         <div class="view-created-recipe-wrapper">
           <div class="row">
             <div class="column">
@@ -407,7 +388,7 @@
             <div class="flex-full-screen">
               <div class="view-created-recipe-ingredients">
                 <img class="view-created-recipe-image margin-bottom-sm" alt="" src="">
-                <div class="ingredients-list margin-center-five margin-bottom">
+                <div class="created-recipe-ingredients-list margin-center margin-bottom">
                   <h3>Ingredients</h3>
                   <ul class="padding-left margin-zero" id="view-created-recipe-ingredients-list">
                   </ul>

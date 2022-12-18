@@ -12,40 +12,40 @@
 // </li>
 
 function renderSearchResults(response, searchId) { // eslint-disable-line
-  var listItem = document.createElement('li');
+  const listItem = document.createElement('li');
   listItem.className = 'search-result-item';
 
-  var listRowDiv = document.createElement('div');
+  const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
   listItem.appendChild(listRowDiv);
 
-  var listColumnDiv = document.createElement('div');
+  const listColumnDiv = document.createElement('div');
   listColumnDiv.className = 'list-column';
   listRowDiv.appendChild(listColumnDiv);
 
-  var resultImageDiv = document.createElement('div');
+  const resultImageDiv = document.createElement('div');
   resultImageDiv.className = 'search-result-image';
   listColumnDiv.appendChild(resultImageDiv);
 
-  var resultTitleDiv = document.createElement('div');
+  const resultTitleDiv = document.createElement('div');
   resultTitleDiv.className = 'search-result-title';
   listColumnDiv.appendChild(resultTitleDiv);
 
-  var imageLink = document.createElement('a');
+  const imageLink = document.createElement('a');
   imageLink.setAttribute('href', '#');
   resultImageDiv.appendChild(imageLink);
 
-  var image = document.createElement('img');
+  const image = document.createElement('img');
   image.setAttribute('alt', response.recipe.label);
   image.setAttribute('src', response.recipe.image);
   image.setAttribute('data-entry-id', searchId);
   imageLink.appendChild(image);
 
-  var titleLink = document.createElement('a');
+  const titleLink = document.createElement('a');
   titleLink.setAttribute('href', '#');
   resultTitleDiv.appendChild(titleLink);
 
-  var title = document.createElement('h2');
+  const title = document.createElement('h2');
   title.textContent = response.recipe.label;
   title.setAttribute('data-entry-id', searchId);
   titleLink.appendChild(title);
@@ -78,87 +78,87 @@ function renderSearchResults(response, searchId) { // eslint-disable-line
 // </li >
 
 function renderSavedRecipes(newRecipe) { // eslint-disable-line
-  var listItem = document.createElement('li');
+  const listItem = document.createElement('li');
   listItem.className = 'saved-recipe';
 
-  var listRowDiv = document.createElement('div');
+  const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
   listItem.appendChild(listRowDiv);
 
-  var listColumnDiv = document.createElement('div');
+  const listColumnDiv = document.createElement('div');
   listColumnDiv.className = 'list-column relative';
   listRowDiv.appendChild(listColumnDiv);
 
-  var recipeImageDiv = document.createElement('div');
+  const recipeImageDiv = document.createElement('div');
   recipeImageDiv.className = 'saved-recipe-image';
   listColumnDiv.appendChild(recipeImageDiv);
 
-  var recipeTitleDiv = document.createElement('div');
+  const recipeTitleDiv = document.createElement('div');
   recipeTitleDiv.className = 'saved-recipe-title flex-space-between';
   listColumnDiv.appendChild(recipeTitleDiv);
 
-  var optionsMenu = document.createElement('div');
+  const optionsMenu = document.createElement('div');
   optionsMenu.className = 'options-menu hidden';
   listColumnDiv.appendChild(optionsMenu);
 
-  var imageLink = document.createElement('a');
+  const imageLink = document.createElement('a');
   imageLink.setAttribute('href', '#');
   recipeImageDiv.appendChild(imageLink);
 
-  var image = document.createElement('img');
+  const image = document.createElement('img');
   image.setAttribute('alt', newRecipe.recipe.label);
   image.setAttribute('src', newRecipe.recipe.image);
   image.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   imageLink.appendChild(image);
 
-  var titleLink = document.createElement('a');
+  const titleLink = document.createElement('a');
   titleLink.setAttribute('href', '#');
   recipeTitleDiv.appendChild(titleLink);
 
-  var title = document.createElement('h2');
+  const title = document.createElement('h2');
   title.textContent = newRecipe.recipe.label;
   title.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   titleLink.appendChild(title);
 
-  var iconLink = document.createElement('a');
+  const iconLink = document.createElement('a');
   iconLink.setAttribute('href', '#');
   iconLink.className = 'options-icon';
   recipeTitleDiv.appendChild(iconLink);
 
-  var icon = document.createElement('i');
+  const icon = document.createElement('i');
   icon.className = 'fa-solid fa-ellipsis fa-xl';
   iconLink.appendChild(icon);
 
-  var closingIconDiv = document.createElement('div');
+  const closingIconDiv = document.createElement('div');
   closingIconDiv.className = 'justify-right padding-right';
   optionsMenu.appendChild(closingIconDiv);
 
-  var closingIconLink = document.createElement('a');
+  const closingIconLink = document.createElement('a');
   closingIconLink.setAttribute('href', '#');
   closingIconLink.className = 'closing-options-icon';
   closingIconDiv.appendChild(closingIconLink);
 
-  var closingIcon = document.createElement('i');
+  const closingIcon = document.createElement('i');
   closingIcon.className = 'fa-solid fa-xmark';
   closingIconLink.appendChild(closingIcon);
 
-  var notesLink = document.createElement('a');
+  const notesLink = document.createElement('a');
   notesLink.setAttribute('href', '#');
   notesLink.className = 'notes-navigation';
   optionsMenu.appendChild(notesLink);
 
-  var notesText = document.createElement('p');
+  const notesText = document.createElement('p');
   notesText.className = 'notes-button theme-font-color';
-  notesText.textContent = 'Notes';
+  notesText.textContent = 'Add Notes';
   notesText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   notesLink.appendChild(notesText);
 
-  var deleteLink = document.createElement('a');
+  const deleteLink = document.createElement('a');
   deleteLink.setAttribute('href', '#');
   deleteLink.className = 'delete-saved-recipe';
   optionsMenu.appendChild(deleteLink);
 
-  var deleteText = document.createElement('p');
+  const deleteText = document.createElement('p');
   deleteText.className = 'delete-button warning-font-color';
   deleteText.textContent = 'Delete';
   deleteText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
@@ -169,87 +169,87 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line
 
 // Reference renderSavedRecipes for sample HTML structure
 function renderCreatedRecipes(newRecipe) { // eslint-disable-line
-  var listItem = document.createElement('li');
+  const listItem = document.createElement('li');
   listItem.className = 'created-recipe';
 
-  var listRowDiv = document.createElement('div');
+  const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
   listItem.appendChild(listRowDiv);
 
-  var listColumnDiv = document.createElement('div');
+  const listColumnDiv = document.createElement('div');
   listColumnDiv.className = 'list-column relative';
   listRowDiv.appendChild(listColumnDiv);
 
-  var recipeImageDiv = document.createElement('div');
+  const recipeImageDiv = document.createElement('div');
   recipeImageDiv.className = 'created-recipe-image';
   listColumnDiv.appendChild(recipeImageDiv);
 
-  var recipeTitleDiv = document.createElement('div');
+  const recipeTitleDiv = document.createElement('div');
   recipeTitleDiv.className = 'created-recipe-title flex-space-between';
   listColumnDiv.appendChild(recipeTitleDiv);
 
-  var optionsMenu = document.createElement('div');
+  const optionsMenu = document.createElement('div');
   optionsMenu.className = 'options-menu hidden';
   listColumnDiv.appendChild(optionsMenu);
 
-  var imageLink = document.createElement('a');
+  const imageLink = document.createElement('a');
   imageLink.setAttribute('href', '#');
   recipeImageDiv.appendChild(imageLink);
 
-  var image = document.createElement('img');
+  const image = document.createElement('img');
   image.setAttribute('alt', newRecipe.title);
   image.setAttribute('src', newRecipe.photoUrl);
   image.setAttribute('data-entry-id', newRecipe.createdRecipeId);
   imageLink.appendChild(image);
 
-  var titleLink = document.createElement('a');
+  const titleLink = document.createElement('a');
   titleLink.setAttribute('href', '#');
   recipeTitleDiv.appendChild(titleLink);
 
-  var title = document.createElement('h2');
+  const title = document.createElement('h2');
   title.textContent = newRecipe.title;
   title.setAttribute('data-entry-id', newRecipe.createdRecipeId);
   titleLink.appendChild(title);
 
-  var iconLink = document.createElement('a');
+  const iconLink = document.createElement('a');
   iconLink.setAttribute('href', '#');
   iconLink.className = 'options-icon';
   recipeTitleDiv.appendChild(iconLink);
 
-  var icon = document.createElement('i');
+  const icon = document.createElement('i');
   icon.className = 'fa-solid fa-ellipsis fa-xl';
   iconLink.appendChild(icon);
 
-  var closingIconDiv = document.createElement('div');
+  const closingIconDiv = document.createElement('div');
   closingIconDiv.className = 'justify-right padding-right';
   optionsMenu.appendChild(closingIconDiv);
 
-  var closingIconLink = document.createElement('a');
+  const closingIconLink = document.createElement('a');
   closingIconLink.setAttribute('href', '#');
   closingIconLink.className = 'closing-options-icon';
   closingIconDiv.appendChild(closingIconLink);
 
-  var closingIcon = document.createElement('i');
+  const closingIcon = document.createElement('i');
   closingIcon.className = 'fa-solid fa-xmark';
   closingIconLink.appendChild(closingIcon);
 
-  var editLink = document.createElement('a');
+  const editLink = document.createElement('a');
   editLink.setAttribute('href', '#');
   editLink.className = 'edit-navigation';
   optionsMenu.appendChild(editLink);
 
-  var editText = document.createElement('p');
+  const editText = document.createElement('p');
   editText.className = 'edit-button theme-font-color';
-  editText.textContent = 'Edit';
+  editText.textContent = 'Edit Recipe';
   editText.setAttribute('data-entry-id', newRecipe.createdRecipeId);
   editLink.appendChild(editText);
 
-  var deleteLink = document.createElement('a');
+  const deleteLink = document.createElement('a');
   deleteLink.setAttribute('href', '#');
   deleteLink.className = 'delete-created-recipe';
   optionsMenu.appendChild(deleteLink);
 
-  var deleteText = document.createElement('p');
+  const deleteText = document.createElement('p');
   deleteText.className = 'delete-button warning-font-color';
   deleteText.textContent = 'Delete';
   deleteText.setAttribute('data-entry-id', newRecipe.createdRecipeId);
@@ -263,9 +263,9 @@ function renderCreatedRecipes(newRecipe) { // eslint-disable-line
 //    </li>
 
 function renderIngrInput() { // eslint-disable-line
-  var listItem = document.createElement('li');
+  const listItem = document.createElement('li');
 
-  var ingrInput = document.createElement('input');
+  const ingrInput = document.createElement('input');
   ingrInput.required = true;
   ingrInput.setAttribute('name', 'ingredient');
   ingrInput.setAttribute('type', 'text');
@@ -281,9 +281,9 @@ function renderIngrInput() { // eslint-disable-line
 //    </li>
 
 function renderDirInput() { // eslint-disable-line
-  var listItem = document.createElement('li');
+  const listItem = document.createElement('li');
 
-  var dirInput = document.createElement('textarea');
+  const dirInput = document.createElement('textarea');
   dirInput.required = true;
   dirInput.setAttribute('name', 'directions');
   dirInput.setAttribute('rows', '7');

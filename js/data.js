@@ -1,5 +1,5 @@
 /* exported data */
-var data = {
+let data = {
   view: '',
   savedRecipes: [],
   createdRecipes: [],
@@ -8,12 +8,17 @@ var data = {
   nextCreatedRecipeId: 1
 };
 
-var previousDataJSON = localStorage.getItem('recipes-local-storage');
+const previousDataJSON = localStorage.getItem('recipes-local-storage');
 if (previousDataJSON !== null) {
   data = JSON.parse(previousDataJSON);
 }
 
 window.addEventListener('beforeunload', function beforeUnload(event) {
-  var dataJSON = JSON.stringify(data);
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('recipes-local-storage', dataJSON);
+});
+
+window.addEventListener('pagehide', function pageHide(event) {
+  const dataJSON = JSON.stringify(data);
   localStorage.setItem('recipes-local-storage', dataJSON);
 });
