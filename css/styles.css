@@ -107,11 +107,6 @@ input:focus {
 }
 
 .saved-recipe-title h2,
-.created-recipe-title h2 {
-  width: 280px;
-}
-
-.saved-recipe-title h2,
 .created-recipe-title h2,
 .search-result-title h2 {
   display: inline-block;
@@ -120,7 +115,7 @@ input:focus {
   font-size: 1.6rem;
   text-decoration: none;
   color: black;
-  margin: 0.75rem 0.25rem 3rem 0.75rem;
+  margin: 0.75rem 0.25rem 0.75rem 0.75rem;
 }
 
 .search-result-title a,
@@ -302,10 +297,6 @@ button.clear-filters {
   color: rgb(118, 184, 95);
 }
 
-button:hover {
-  cursor: pointer;
-}
-
 label {
   font-size: 1.25rem;
 }
@@ -356,16 +347,18 @@ select {
   color: white;
 }
 
-.off-green-button:hover {
-  cursor: pointer;
-}
-
 .create-recipe-navigation {
   margin-left: 1.25rem;
 }
 
 .filter-row {
   margin-top: 1.25rem;
+}
+
+button:hover,
+select:hover,
+.off-green-button:hover {
+  cursor: pointer;
 }
 
 /* Create Recipe Form */
@@ -481,11 +474,6 @@ select {
   .query-text {
     width: 50%;
     font-size: 1.5rem;
-  }
-
-  .saved-recipe-title h2,
-  .created-recipe-title h2 {
-    width: 320px;
   }
 
   .delete-recipe-modal,

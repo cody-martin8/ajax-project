@@ -13,7 +13,7 @@
 
 function renderSearchResults(response, searchId) { // eslint-disable-line
   const listItem = document.createElement('li');
-  listItem.className = 'search-result-item';
+  listItem.className = 'search-result-item margin-bottom';
 
   const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
@@ -79,7 +79,7 @@ function renderSearchResults(response, searchId) { // eslint-disable-line
 
 function renderSavedRecipes(newRecipe) { // eslint-disable-line
   const listItem = document.createElement('li');
-  listItem.className = 'saved-recipe';
+  listItem.className = 'saved-recipe margin-bottom';
 
   const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
@@ -170,7 +170,7 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line
 // Reference renderSavedRecipes for sample HTML structure
 function renderCreatedRecipes(newRecipe) { // eslint-disable-line
   const listItem = document.createElement('li');
-  listItem.className = 'created-recipe';
+  listItem.className = 'created-recipe margin-bottom';
 
   const listRowDiv = document.createElement('div');
   listRowDiv.className = 'list-row';
