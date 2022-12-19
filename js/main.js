@@ -10,6 +10,7 @@ const $returnButton = document.querySelector('.save-filters-button.orange-button
 const $savedRecipesTab = document.querySelectorAll('.saved-recipes-tab');
 const $createdRecipesTab = document.querySelectorAll('.created-recipes-tab');
 const $recipeBookTabs = document.querySelectorAll('.row.tab');
+const $savedRecipeSpinner = document.querySelector('.saved-recipe-spinner');
 
 $recipeBookNav.addEventListener('click', function () {
   recipeBookNav();
@@ -91,6 +92,7 @@ function retrieveRecipes(recipeId, savedRecipeId) {
   xhr.addEventListener('load', function () {
     console.log(xhr.status); // eslint-disable-line no-console
     console.log(xhr.response); // eslint-disable-line no-console
+    $savedRecipeSpinner.className = 'saved-recipe-spinner flex-complete-center height-50 hidden';
     const newRecipe = xhr.response;
     newRecipe.savedRecipeId = savedRecipeId;
     $savedRecipesList.appendChild(renderSavedRecipes(newRecipe)); // eslint-disable-line
@@ -101,6 +103,7 @@ function retrieveRecipes(recipeId, savedRecipeId) {
     }
   });
   xhr.send();
+  $savedRecipeSpinner.className = 'saved-recipe-spinner flex-complete-center height-50';
 }
 
 window.addEventListener('DOMContentLoaded', function loadJournal() {
@@ -149,6 +152,7 @@ $clearFiltersButton.addEventListener('click', clearFilters);
 
 const $searchForm = document.getElementById('recipe-search-form');
 const $searchList = document.getElementById('search-result-list');
+const $searchResultsSpinner = document.querySelector('.search-results-spinner');
 
 let searchData = [];
 
@@ -159,6 +163,7 @@ function getRecipes(search) {
   xhr.addEventListener('load', function () {
     console.log(xhr.status); // eslint-disable-line no-console
     console.log(xhr.response); // eslint-disable-line no-console
+    $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50 hidden';
     let searchId = 0;
     for (let i = 0; i < xhr.response.hits.length; i++) {
       $searchList.append(renderSearchResults(xhr.response.hits[i], searchId)); // eslint-disable-line
@@ -167,6 +172,7 @@ function getRecipes(search) {
     searchData.push(xhr.response.hits);
   });
   xhr.send();
+  $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50';
 }
 
 // Clicking the Search button on the Search page
