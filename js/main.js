@@ -197,6 +197,9 @@ function getRecipes(search) {
       $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
       searchId++;
     }
+    if ($searchList.children.length < 1) {
+      $emptySearchResults.className = 'empty-search-results flex-complete-center height-30';
+    }
     searchData.push(xhr.response.hits);
   });
 
@@ -210,10 +213,6 @@ function getRecipes(search) {
 
   xhr.send();
   $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50';
-
-  if ($searchList.children.length < 1) {
-    $emptySearchResults.className = 'empty-search-results flex-complete-center height-30';
-  }
 }
 
 // Clicking the Search button on the Search page
