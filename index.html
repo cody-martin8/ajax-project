@@ -75,6 +75,20 @@
                 <div></div>
               </div>
             </div>
+            <div class="empty-search-results flex-complete-center height-30 hidden">
+              <div class="empty-list-wrapper">
+                <p class="empty-list-message">
+                  No recipes matched your search parameters. Please check your filters and try searching again.
+                </p>
+              </div>
+            </div>
+            <div class="search-error-message flex-complete-center height-30 hidden">
+              <div class="error-message-wrapper">
+                <p class="error-message">
+                  There was an unexpected error during your search. Please check your internet connection and try again.
+                </p>
+              </div>
+            </div>
             <ul class="flex-wrap" id="search-result-list">
             </ul>
           </div>
@@ -286,9 +300,9 @@
         <div class="row tab" data-view="saved-recipes-page">
           <div class="flex-buttons margin-bottom">
             <button type="button" class="saved-recipes-tab white-button margin-right">Saved Recipes</button>
-            <button type="button" class="created-recipes-tab green-button padding-adjust">Created Recipes</button>
+            <button type="button" class="created-recipes-tab green-button">Created Recipes</button>
           </div>
-          <div class="saved-recipe-spinner flex-complete-center height-50 hidden">
+          <div class="saved-recipes-spinner flex-complete-center height-50 hidden">
             <div class="lds-spinner">
               <div></div>
               <div></div>
@@ -302,6 +316,20 @@
               <div></div>
               <div></div>
               <div></div>
+            </div>
+          </div>
+          <div class="empty-saved-recipes flex-complete-center height-30 hidden">
+            <div class="empty-list-wrapper">
+              <p class="empty-list-message">
+                There are no saved recipes yet. You can find recipes by clicking the Search button above!
+              </p>
+            </div>
+          </div>
+          <div class="saved-recipes-error-message flex-complete-center height-30 hidden">
+            <div class="error-message-wrapper">
+              <p class="error-message">
+                There was an unexpected error while trying to retrieve your saved recipes. Please check your internet connection and refresh the page.
+              </p>
             </div>
           </div>
           <ul class="flex-wrap" id="saved-recipes-list">
@@ -327,8 +355,15 @@
         <!-- Created Recipes List on Recipe Book page -->
         <div class="row tab hidden" data-view="created-recipes-page">
           <div class="flex-buttons margin-bottom">
-            <button type="button" class="saved-recipes-tab green-button margin-right padding-adjust">Saved Recipes</button>
+            <button type="button" class="saved-recipes-tab green-button margin-right">Saved Recipes</button>
             <button type="button" class="created-recipes-tab white-button">Created Recipes</button>
+          </div>
+          <div class="empty-created-recipes flex-complete-center height-50 hidden">
+            <div class="empty-list-wrapper">
+              <p class="empty-list-message">
+                It does not look like you have added any new recipes yet. You can add recipes by clicking the Create button above!
+              </p>
+            </div>
           </div>
           <ul class="flex-wrap" id="created-recipes-list">
           </ul>
