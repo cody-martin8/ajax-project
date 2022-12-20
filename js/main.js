@@ -10,10 +10,16 @@ const $returnButton = document.querySelector('.save-filters-button.orange-button
 const $savedRecipesTab = document.querySelectorAll('.saved-recipes-tab');
 const $createdRecipesTab = document.querySelectorAll('.created-recipes-tab');
 const $recipeBookTabs = document.querySelectorAll('.row.tab');
+const $savedRecipeSpinner = document.querySelector('.saved-recipes-spinner');
+const $emptySavedRecipes = document.querySelector('.empty-saved-recipes');
+const $emptyCreatedRecipes = document.querySelector('.empty-created-recipes');
+const $savedRecipesErrorMessage = document.querySelector('.saved-recipes-error-message');
 
 $recipeBookNav.addEventListener('click', function () {
   recipeBookNav();
   returnToRecipeBook();
+  $emptySearchResults.className = 'empty-search-results flex-complete-center height-50 hidden';
+  $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
 });
 
 function recipeBookNav() {
@@ -99,8 +105,21 @@ function retrieveRecipes(recipeId, savedRecipeId) {
         data.savedRecipes[i].recipe.image = newRecipe.recipe.image;
       }
     }
+    $savedRecipeSpinner.className = 'saved-recipes-spinner flex-complete-center height-50 hidden';
+    $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-30 hidden';
+    $savedRecipesErrorMessage.className = 'saved-recipes-error-message flex-complete-center height-30 hidden';
   });
+
+  xhr.addEventListener('error', event => {
+    if (event) {
+      $savedRecipesErrorMessage.className = 'saved-recipes-error-message flex-complete-center height-30';
+      $savedRecipeSpinner.className = 'saved-recipes-spinner flex-complete-center height-50 hidden';
+      $emptySearchResults.className = 'empty-saved-recipes flex-complete-center height-30 hidden';
+    }
+  });
+
   xhr.send();
+  $savedRecipeSpinner.className = 'saved-recipes-spinner flex-complete-center height-50';
 }
 
 window.addEventListener('DOMContentLoaded', function loadJournal() {
@@ -109,9 +128,17 @@ window.addEventListener('DOMContentLoaded', function loadJournal() {
     const savedRecipeId = data.savedRecipes[i].savedRecipeId;
     retrieveRecipes(recipeId[1], savedRecipeId);
   }
+  if (data.savedRecipes.length < 1) {
+    $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-50';
+  }
 
   for (let i = 0; i < data.createdRecipes.length; i++) {
     $createdRecipesList.appendChild(renderCreatedRecipes(data.createdRecipes[i])); // eslint-disable-line
+  }
+  if (data.createdRecipes.length < 1) {
+    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50';
+  } else {
+    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50 hidden';
   }
 });
 
@@ -149,6 +176,9 @@ $clearFiltersButton.addEventListener('click', clearFilters);
 
 const $searchForm = document.getElementById('recipe-search-form');
 const $searchList = document.getElementById('search-result-list');
+const $searchResultsSpinner = document.querySelector('.search-results-spinner');
+const $emptySearchResults = document.querySelector('.empty-search-results');
+const $searchErrorMessage = document.querySelector('.search-error-message');
 
 let searchData = [];
 
@@ -159,14 +189,31 @@ function getRecipes(search) {
   xhr.addEventListener('load', function () {
     console.log(xhr.status); // eslint-disable-line no-console
     console.log(xhr.response); // eslint-disable-line no-console
+    $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50 hidden';
     let searchId = 0;
     for (let i = 0; i < xhr.response.hits.length; i++) {
       $searchList.append(renderSearchResults(xhr.response.hits[i], searchId)); // eslint-disable-line
+      $emptySearchResults.className = 'empty-search-results flex-complete-center height-50 hidden';
+      $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
       searchId++;
     }
     searchData.push(xhr.response.hits);
   });
+
+  xhr.addEventListener('error', event => {
+    if (event) {
+      $searchErrorMessage.className = 'search-error-message flex-complete-center height-30';
+      $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50 hidden';
+      $emptySearchResults.className = 'empty-search-results flex-complete-center height-30 hidden';
+    }
+  });
+
   xhr.send();
+  $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50';
+
+  if ($searchList.children.length < 1) {
+    $emptySearchResults.className = 'empty-search-results flex-complete-center height-30';
+  }
 }
 
 // Clicking the Search button on the Search page
@@ -253,6 +300,7 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   data.savedRecipes.push(newRecipe);
   data.nextSavedRecipeId++;
   $savedRecipesList.append(renderSavedRecipes(newRecipe)); // eslint-disable-line
+  $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-50 hidden';
   $searchPage[0].className = 'container tab';
   $searchPage[2].className = 'container tab hidden';
 });
@@ -428,6 +476,9 @@ function confirmDelete() {
     }
   }
   data.editing = null;
+  if (data.savedRecipes.length < 1) {
+    $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-50';
+  }
   closeModal();
 }
 
@@ -466,21 +517,22 @@ $cancelNotes.addEventListener('click', function cancelNotes() {
   data.editing = null;
 });
 
+// Create Recipe Section
+
 const $createRecipeImage = document.querySelector('.create-recipe-image');
 const $createRecipeTitle = document.querySelector('.create-recipe-title');
 const $photoUrl = document.querySelector('.create-recipe-image-url');
-
-$photoUrl.addEventListener('input', function inputImage(event) {
-  event.preventDefault();
-  $createRecipeImage.setAttribute('src', event.target.value);
-});
-
 const $createIngredientsList = document.getElementById('create-ingredients-list');
 const $createDirectionsList = document.getElementById('create-directions-list');
 const $addIngredientInput = document.querySelector('.add-ingredient-input');
 const $addDirectionsInput = document.querySelector('.add-directions-input');
 const $removeIngredientInput = document.querySelector('.remove-ingredient-input');
 const $removeDirectionsInput = document.querySelector('.remove-directions-input');
+
+$photoUrl.addEventListener('input', function inputImage(event) {
+  event.preventDefault();
+  $createRecipeImage.setAttribute('src', event.target.value);
+});
 
 $addIngredientInput.addEventListener('click', function () {
   event.preventDefault();
@@ -537,6 +589,7 @@ $createRecipe.addEventListener('submit', function inputCreateRecipe(event) {
     data.createdRecipes.unshift(createRecipe);
     $createRecipeImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     $createRecipe.reset();
+    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50 hidden';
     recipeBookNav();
   } else {
 
@@ -668,6 +721,9 @@ function confirmCreatedRecipeDelete() {
     }
   }
   data.editing = null;
+  if (data.createdRecipes.length < 1) {
+    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50';
+  }
   closeCreatedRecipeModal();
 }
 
@@ -692,9 +748,9 @@ const $createdRecipeHeading = document.querySelector('.view-created-recipe-wrapp
 const $createdRecipeIngredients = document.getElementById('view-created-recipe-ingredients-list');
 const $createdRecipeDirections = document.getElementById('view-created-recipe-directions-list');
 const $createdRecipeImage = document.querySelector('.view-created-recipe-wrapper img');
-const $returnCreatedButton = document.querySelector('.return-created-button');
+const $createdRecipeReturnButton = document.querySelector('.return-created-button');
 
-$returnCreatedButton.addEventListener('click', function () {
+$createdRecipeReturnButton.addEventListener('click', function () {
   returnToRecipeBook();
   data.editing = null;
 });

@@ -39,6 +39,12 @@ body {
   justify-content: center;
 }
 
+.flex-complete-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flex-buttons,
 .flex-space-between,
 .create-recipe-button-row,
