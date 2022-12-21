@@ -282,6 +282,11 @@ $searchList.addEventListener('click', function viewNewRecipe(event) {
   $searchPage[2].className = 'container tab';
 });
 
+$newRecipeLink.addEventListener('click', function openRecipeLink(event) {
+  event.preventDefault();
+  window.open(event.target.href);
+});
+
 // Clicking Save Recipe button
 
 const $saveRecipe = document.querySelector('.save-recipe-button');
@@ -369,8 +374,10 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
     $savedRecipeImage.alt = data.editing.recipe.label;
     $savedRecipeImage.src = data.editing.recipe.image;
     $savedRecipeLink.href = data.editing.recipe.url;
-    if (data.editing.notes !== undefined) {
+    if (data.editing.notes !== undefined && data.editing.notes !== '') {
       $savedRecipeNotes.textContent = data.editing.notes;
+    } else {
+      $savedRecipeNotes.textContent = 'Notes can be added here if there are any adjustments that you prefer with this recipe.';
     }
     for (let n = 0; n < data.editing.recipe.ingredients.length; n++) {
       const ingredient = document.createElement('li');
@@ -382,6 +389,11 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
     }
     viewSavedRecipe();
   }
+});
+
+$savedRecipeLink.addEventListener('click', function openSavedRecipeLink() {
+  event.preventDefault();
+  window.open(event.target.href);
 });
 
 // Open and Close Options Menu
@@ -462,6 +474,11 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
   }
 });
 
+$addNotesLink.addEventListener('click', function openAddNotesLink() {
+  event.preventDefault();
+  window.open(event.target.href);
+});
+
 function confirmDelete() {
   for (let i = 0; i < data.savedRecipes.length; i++) {
     if (data.editing.savedRecipeId === data.savedRecipes[i].savedRecipeId) {
@@ -500,6 +517,7 @@ $cancelButton.addEventListener('click', closeModal);
 
 $saveNotes.addEventListener('submit', function saveNotes() {
   data.editing.notes = $notesArea.value;
+  // if $notesArea.value = '', data.editing.notes = [default notes value];
   for (let i = 0; i < data.savedRecipes.length; i++) {
     if (data.savedRecipes[i].savedRecipeId === data.editing.savedRecipeId) {
       data.savedRecipes[i] = data.editing;
