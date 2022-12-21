@@ -31,16 +31,51 @@ function recipeBookNav() {
       $pages[i].className = 'page';
     }
   }
+  if ($recipeBookTabs[0].className === 'row tab') {
+    data.view = 'recipe-book';
+  }
+  if ($recipeBookTabs[1].className === 'row tab') {
+    data.view = 'created-recipes-book';
+  }
 }
 
 function recipeBookSavedTab() {
   $recipeBookTabs[0].className = 'row tab';
   $recipeBookTabs[1].className = 'row tab hidden';
+  data.view = 'recipe-book';
 }
 
 function recipeBookCreatedTab() {
   $recipeBookTabs[0].className = 'row tab hidden';
   $recipeBookTabs[1].className = 'row tab';
+  data.view = 'created-recipes-book';
+}
+
+function searchPageNav() {
+  for (let i = 0; i < $pages.length; i++) {
+    if ($pages[i].dataset.view !== 'search-form') {
+      $pages[i].className = 'page hidden';
+    }
+    if ($pages[i].dataset.view === 'search-form') {
+      $pages[i].className = 'page';
+    }
+  }
+  $searchPage[0].className = 'container tab';
+  $searchPage[1].className = 'container tab hidden';
+  $searchPage[2].className = 'container tab hidden';
+  data.view = 'search-page';
+}
+
+function createRecipeNav() {
+  for (let i = 0; i < $pages.length; i++) {
+    if ($pages[i].dataset.view !== 'create-recipe-page') {
+      $pages[i].className = 'page hidden';
+    }
+    if ($pages[i].dataset.view === 'create-recipe-page') {
+      $pages[i].className = 'page';
+    }
+  }
+  data.view = 'create-recipe-page';
 }
 
 $savedRecipesTab[0].addEventListener('click', function () {
@@ -60,32 +95,36 @@ $createdRecipesTab[1].addEventListener('click', function () {
 });
 
 $searchNav.addEventListener('click', function () {
-  for (let i = 0; i < $pages.length; i++) {
-    if ($pages[i].dataset.view !== 'search-form') {
-      $pages[i].className = 'page hidden';
-    }
-    if ($pages[i].dataset.view === 'search-form') {
-      $pages[i].className = 'page';
-    }
-  }
-  $searchPage[0].className = 'container tab';
-  $searchPage[1].className = 'container tab hidden';
-  $searchPage[2].className = 'container tab hidden';
+  searchPageNav();
 });
-
-function createRecipeNav() {
-  for (let i = 0; i < $pages.length; i++) {
-    if ($pages[i].dataset.view !== 'create-recipe-page') {
-      $pages[i].className = 'page hidden';
-    }
-    if ($pages[i].dataset.view === 'create-recipe-page') {
-      $pages[i].className = 'page';
-    }
-  }
-}
 
 $createRecipeNav.addEventListener('click', function () {
   createRecipeNav();
+});
+
+window.addEventListener('DOMContentLoaded', function loadPreviousWindow() {
+  switch (data.view) {
+    case 'recipe-book':
+      recipeBookNav();
+      recipeBookSavedTab();
+      returnToRecipeBook();
+      break;
+    case 'created-recipes-book':
+      recipeBookNav();
+      recipeBookCreatedTab();
+      returnToRecipeBook();
+      break;
+    case 'search-page':
+      searchPageNav();
+      break;
+    case 'create-recipe-page':
+      createRecipeNav();
+      break;
+    default:
+      recipeBookNav();
+      recipeBookSavedTab();
+      returnToRecipeBook();
+  }
 });
 
 // Upon page reload (local storage)
