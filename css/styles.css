@@ -1,7 +1,6 @@
 body {
   background-color: rgb(238, 238, 238);
   position: relative;
-  width: 100%;
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
   line-height: 1.6;
@@ -10,6 +9,7 @@ body {
 body.modal-open {
   overflow: hidden;
   position: fixed;
+  width: 100%;
 }
 
 h1,
@@ -327,6 +327,12 @@ input:focus {
   margin: 1rem 1rem 2.5rem 0.75rem;
 }
 
+.closing-options-icon {
+  border: none;
+  color: rgb(253, 43, 43);
+  background-color: white;
+}
+
 .options-menu {
   position: absolute;
   top: 245px;
@@ -342,11 +348,19 @@ input:focus {
   text-decoration: none;
 }
 
-.options-menu p {
-  margin: 0 0 0.5rem 0.25rem;
+.options-menu button {
+  border: none;
+  background-color: white;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* Pop Up for Deleting Recipes */
+.options-menu p {
+  margin: 0 0 0.25rem 0.25rem;
+}
+
+/* Pop Up Modal for Deleting Recipes */
 
 .overlay {
   background-color: rgb(0 0 0 / 35%);
@@ -561,7 +575,7 @@ select:hover,
 
 .padding-right {
   padding-top: 0.25rem;
-  padding-right: 0.25rem;
+  padding-right: 0.5rem;
 }
 
 .padding-left {
@@ -577,6 +591,11 @@ select:hover,
 @media screen and (min-width: 768px) {
   body {
     height: 100vh;
+  }
+
+  body.modal-open main,
+  body.modal-open .container-header {
+    padding-right: 1rem;
   }
 
   .create-recipe-column-a,

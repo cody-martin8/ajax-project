@@ -11,6 +11,7 @@ let data = {
 const previousDataJSON = localStorage.getItem('recipes-local-storage');
 if (previousDataJSON !== null) {
   data = JSON.parse(previousDataJSON);
+  data.editing = null;
 }
 
 window.addEventListener('beforeunload', function beforeUnload(event) {

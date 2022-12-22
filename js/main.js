@@ -17,7 +17,7 @@ const $savedRecipesErrorMessage = document.querySelector('.saved-recipes-error-m
 
 $recipeBookNav.addEventListener('click', function () {
   recipeBookNav();
-  returnToRecipeBook();
+  resetRecipeBookTabs();
   $emptySearchResults.className = 'empty-search-results flex-complete-center height-50 hidden';
   $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
 });
@@ -31,35 +31,27 @@ function recipeBookNav() {
       $pages[i].className = 'page';
     }
   }
+  if ($recipeBookTabs[0].className === 'row tab') {
+    data.view = 'recipe-book';
+  }
+  if ($recipeBookTabs[1].className === 'row tab') {
+    data.view = 'created-recipes-book';
+  }
 }
 
 function recipeBookSavedTab() {
   $recipeBookTabs[0].className = 'row tab';
   $recipeBookTabs[1].className = 'row tab hidden';
+  data.view = 'recipe-book';
 }
 
 function recipeBookCreatedTab() {
   $recipeBookTabs[0].className = 'row tab hidden';
   $recipeBookTabs[1].className = 'row tab';
+  data.view = 'created-recipes-book';
 }
 
-$savedRecipesTab[0].addEventListener('click', function () {
-  recipeBookSavedTab();
-});
-
-$savedRecipesTab[1].addEventListener('click', function () {
-  recipeBookSavedTab();
-});
-
-$createdRecipesTab[0].addEventListener('click', function () {
-  recipeBookCreatedTab();
-});
-
-$createdRecipesTab[1].addEventListener('click', function () {
-  recipeBookCreatedTab();
-});
-
-$searchNav.addEventListener('click', function () {
+function searchPageNav() {
   for (let i = 0; i < $pages.length; i++) {
     if ($pages[i].dataset.view !== 'search-form') {
       $pages[i].className = 'page hidden';
@@ -71,7 +63,9 @@ $searchNav.addEventListener('click', function () {
   $searchPage[0].className = 'container tab';
   $searchPage[1].className = 'container tab hidden';
   $searchPage[2].className = 'container tab hidden';
-});
+  data.view = 'search-page';
+  window.scroll(0, 0);
+}
 
 function createRecipeNav() {
   for (let i = 0; i < $pages.length; i++) {
@@ -82,10 +76,93 @@ function createRecipeNav() {
       $pages[i].className = 'page';
     }
   }
+  data.view = 'create-recipe-page';
+  window.scroll(0, 0);
 }
+
+$savedRecipesTab[0].addEventListener('click', function () {
+  recipeBookSavedTab();
+});
+
+$savedRecipesTab[1].addEventListener('click', function () {
+  recipeBookSavedTab();
+  for (let i = 0; i < data.createdRecipes.length; i++) {
+    if ($createdRecipesList.children[i].querySelector('.options-menu.hidden') === null) {
+      const close = $createdRecipesList.children[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+});
+
+$createdRecipesTab[0].addEventListener('click', function () {
+  recipeBookCreatedTab();
+  for (let i = 1; i - 1 < data.savedRecipes.length; i++) {
+    if ($savedRecipesList.childNodes[i].querySelector('.options-menu.hidden') === null) {
+      const close = $savedRecipesList.childNodes[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+});
+
+$createdRecipesTab[1].addEventListener('click', function () {
+  recipeBookCreatedTab();
+});
+
+$searchNav.addEventListener('click', function () {
+  searchPageNav();
+  for (let i = 1; i - 1 < data.savedRecipes.length; i++) {
+    if ($savedRecipesList.childNodes[i].querySelector('.options-menu.hidden') === null) {
+      const close = $savedRecipesList.childNodes[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+  for (let i = 0; i < data.createdRecipes.length; i++) {
+    if ($createdRecipesList.children[i].querySelector('.options-menu.hidden') === null) {
+      const close = $createdRecipesList.children[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+});
 
 $createRecipeNav.addEventListener('click', function () {
   createRecipeNav();
+  for (let i = 1; i - 1 < data.savedRecipes.length; i++) {
+    if ($savedRecipesList.childNodes[i].querySelector('.options-menu.hidden') === null) {
+      const close = $savedRecipesList.childNodes[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+  for (let i = 0; i < data.createdRecipes.length; i++) {
+    if ($createdRecipesList.children[i].querySelector('.options-menu.hidden') === null) {
+      const close = $createdRecipesList.children[i].querySelector('.options-menu');
+      close.className = 'options-menu hidden';
+    }
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function loadPreviousWindow() {
+  switch (data.view) {
+    case 'recipe-book':
+      recipeBookNav();
+      recipeBookSavedTab();
+      resetRecipeBookTabs();
+      break;
+    case 'created-recipes-book':
+      recipeBookNav();
+      recipeBookCreatedTab();
+      resetRecipeBookTabs();
+      break;
+    case 'search-page':
+      searchPageNav();
+      break;
+    case 'create-recipe-page':
+      createRecipeNav();
+      break;
+    default:
+      recipeBookNav();
+      recipeBookSavedTab();
+      resetRecipeBookTabs();
+  }
 });
 
 // Upon page reload (local storage)
@@ -352,7 +429,7 @@ function viewCreatedRecipe() {
   $recipeBookPageNav[3].className = 'container page';
 }
 
-function returnToRecipeBook() {
+function resetRecipeBookTabs() {
   $recipeBookPageNav[0].className = 'container page';
   $recipeBookPageNav[1].className = 'container page hidden';
   $recipeBookPageNav[2].className = 'container page hidden';
@@ -388,6 +465,7 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
       $savedRecipeIngredients.appendChild(ingredient);
     }
     viewSavedRecipe();
+    window.scroll(0, 0);
   }
 });
 
@@ -415,7 +493,7 @@ $savedRecipesList.addEventListener('click', function openOptionsMenu(event) {
 });
 
 $returnSavedButton.addEventListener('click', function () {
-  returnToRecipeBook();
+  resetRecipeBookTabs();
   data.editing = null;
 });
 
@@ -454,6 +532,7 @@ $savedRecipesList.addEventListener('click', function openAddNotes(event) {
       $addNotesIngredients.appendChild(ingredient);
     }
     notesPageNav();
+    window.scroll(0, 0);
   }
 
   // Delete Button for Saved Recipes
@@ -524,13 +603,13 @@ $saveNotes.addEventListener('submit', function saveNotes() {
     }
   }
   $notesArea.value = '';
-  returnToRecipeBook();
+  resetRecipeBookTabs();
   data.editing = null;
 });
 
 $cancelNotes.addEventListener('click', function cancelNotes() {
   $notesArea.value = '';
-  returnToRecipeBook();
+  resetRecipeBookTabs();
   data.editing = null;
 });
 
@@ -608,6 +687,7 @@ $createRecipe.addEventListener('submit', function inputCreateRecipe(event) {
     $createRecipe.reset();
     $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50 hidden';
     recipeBookNav();
+    window.scroll(0, 0);
   } else {
 
     // Edited Recipes
@@ -636,8 +716,11 @@ $createRecipe.addEventListener('submit', function inputCreateRecipe(event) {
     $createRecipeImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     $createRecipe.reset();
     recipeBookNav();
+    window.scroll(0, 0);
   }
 });
+
+// Open and Close Options Menu for Created Recipes List
 
 $createdRecipesList.addEventListener('click', function openOptionsMenu(event) {
   event.preventDefault();
@@ -704,7 +787,9 @@ $createdRecipesList.addEventListener('click', function openEditRecipe(event) {
       dirInputs[b].firstElementChild.value = data.editing.directions[b];
     }
     createRecipeNav();
-    returnToRecipeBook();
+    window.scroll(0, 0);
+    data.view = 'created-recipes-book';
+    resetRecipeBookTabs();
   }
 
   // Delete Button for Created Recipes
@@ -768,7 +853,7 @@ const $createdRecipeImage = document.querySelector('.view-created-recipe-wrapper
 const $createdRecipeReturnButton = document.querySelector('.return-created-button');
 
 $createdRecipeReturnButton.addEventListener('click', function () {
-  returnToRecipeBook();
+  resetRecipeBookTabs();
   data.editing = null;
 });
 
@@ -806,5 +891,6 @@ $createdRecipesList.addEventListener('click', function openCreatedRecipe(event) 
       $createdRecipeDirections.appendChild(direction);
     }
     viewCreatedRecipe();
+    window.scroll(0, 0);
   }
 });
