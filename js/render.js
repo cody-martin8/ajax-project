@@ -133,14 +133,14 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line
   closingIconDiv.className = 'justify-right padding-right';
   optionsMenu.appendChild(closingIconDiv);
 
-  const closingIconLink = document.createElement('a');
-  closingIconLink.setAttribute('href', '#');
-  closingIconLink.className = 'closing-options-icon';
-  closingIconDiv.appendChild(closingIconLink);
+  const closingIconButton = document.createElement('button');
+  closingIconButton.setAttribute('type', 'button');
+  closingIconButton.className = 'closing-options-icon';
+  closingIconDiv.appendChild(closingIconButton);
 
   const closingIcon = document.createElement('i');
   closingIcon.className = 'fa-solid fa-xmark';
-  closingIconLink.appendChild(closingIcon);
+  closingIconButton.appendChild(closingIcon);
 
   const notesLink = document.createElement('a');
   notesLink.setAttribute('href', '#');
@@ -153,16 +153,16 @@ function renderSavedRecipes(newRecipe) { // eslint-disable-line
   notesText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
   notesLink.appendChild(notesText);
 
-  const deleteLink = document.createElement('a');
-  deleteLink.setAttribute('href', '#');
-  deleteLink.className = 'delete-saved-recipe';
-  optionsMenu.appendChild(deleteLink);
+  const deleteButton = document.createElement('button');
+  deleteButton.setAttribute('type', 'button');
+  deleteButton.className = 'delete-saved-recipe';
+  optionsMenu.appendChild(deleteButton);
 
   const deleteText = document.createElement('p');
   deleteText.className = 'delete-button warning-font-color';
   deleteText.textContent = 'Delete';
   deleteText.setAttribute('data-entry-id', newRecipe.savedRecipeId);
-  deleteLink.appendChild(deleteText);
+  deleteButton.appendChild(deleteText);
 
   return listItem;
 }
@@ -224,14 +224,14 @@ function renderCreatedRecipes(newRecipe) { // eslint-disable-line
   closingIconDiv.className = 'justify-right padding-right';
   optionsMenu.appendChild(closingIconDiv);
 
-  const closingIconLink = document.createElement('a');
-  closingIconLink.setAttribute('href', '#');
-  closingIconLink.className = 'closing-options-icon';
-  closingIconDiv.appendChild(closingIconLink);
+  const closingIconButton = document.createElement('button');
+  closingIconButton.setAttribute('type', 'button');
+  closingIconButton.className = 'closing-options-icon';
+  closingIconDiv.appendChild(closingIconButton);
 
   const closingIcon = document.createElement('i');
   closingIcon.className = 'fa-solid fa-xmark';
-  closingIconLink.appendChild(closingIcon);
+  closingIconButton.appendChild(closingIcon);
 
   const editLink = document.createElement('a');
   editLink.setAttribute('href', '#');
@@ -244,16 +244,16 @@ function renderCreatedRecipes(newRecipe) { // eslint-disable-line
   editText.setAttribute('data-entry-id', newRecipe.createdRecipeId);
   editLink.appendChild(editText);
 
-  const deleteLink = document.createElement('a');
-  deleteLink.setAttribute('href', '#');
-  deleteLink.className = 'delete-created-recipe';
-  optionsMenu.appendChild(deleteLink);
+  const deleteButton = document.createElement('button');
+  deleteButton.setAttribute('type', 'button');
+  deleteButton.className = 'delete-created-recipe';
+  optionsMenu.appendChild(deleteButton);
 
   const deleteText = document.createElement('p');
   deleteText.className = 'delete-button warning-font-color';
   deleteText.textContent = 'Delete';
   deleteText.setAttribute('data-entry-id', newRecipe.createdRecipeId);
-  deleteLink.appendChild(deleteText);
+  deleteButton.appendChild(deleteText);
 
   return listItem;
 }
