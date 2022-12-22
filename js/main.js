@@ -18,8 +18,8 @@ const $savedRecipesErrorMessage = document.querySelector('.saved-recipes-error-m
 $recipeBookNav.addEventListener('click', function () {
   recipeBookNav();
   resetRecipeBookTabs();
-  $emptySearchResults.className = 'empty-search-results flex-complete-center height-50 hidden';
-  $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
+  $emptySearchResults.className = 'empty-search-results hidden';
+  $searchErrorMessage.className = 'search-error-message hidden';
 });
 
 function recipeBookNav() {
@@ -172,8 +172,6 @@ function retrieveRecipes(recipeId, savedRecipeId) {
   xhr.open('GET', 'https://api.edamam.com/api/recipes/v2/' + recipeId + '?type=public&app_id=25ee5a1c&app_key=2e0d886c58ffcac239ddf7ae29b2d302');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status); // eslint-disable-line no-console
-    console.log(xhr.response); // eslint-disable-line no-console
     const newRecipe = xhr.response;
     newRecipe.savedRecipeId = savedRecipeId;
     $savedRecipesList.appendChild(renderSavedRecipes(newRecipe)); // eslint-disable-line
@@ -182,16 +180,16 @@ function retrieveRecipes(recipeId, savedRecipeId) {
         data.savedRecipes[i].recipe.image = newRecipe.recipe.image;
       }
     }
-    $savedRecipeSpinner.className = 'saved-recipes-spinner flex-complete-center height-50 hidden';
-    $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-30 hidden';
-    $savedRecipesErrorMessage.className = 'saved-recipes-error-message flex-complete-center height-30 hidden';
+    $savedRecipeSpinner.className = 'saved-recipes-spinner hidden';
+    $emptySavedRecipes.className = 'empty-saved-recipes hidden';
+    $savedRecipesErrorMessage.className = 'saved-recipes-error-message hidden';
   });
 
   xhr.addEventListener('error', event => {
     if (event) {
-      $savedRecipesErrorMessage.className = 'saved-recipes-error-message flex-complete-center height-30';
-      $savedRecipeSpinner.className = 'saved-recipes-spinner flex-complete-center height-50 hidden';
-      $emptySearchResults.className = 'empty-saved-recipes flex-complete-center height-30 hidden';
+      $savedRecipesErrorMessage.className = 'saved-recipes-error-message flex-complete-center height-50';
+      $savedRecipeSpinner.className = 'saved-recipes-spinner hidden';
+      $emptySearchResults.className = 'empty-saved-recipes hidden';
     }
   });
 
@@ -215,7 +213,7 @@ window.addEventListener('DOMContentLoaded', function loadJournal() {
   if (data.createdRecipes.length < 1) {
     $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50';
   } else {
-    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50 hidden';
+    $emptyCreatedRecipes.className = 'empty-created-recipes hidden';
   }
 });
 
@@ -264,18 +262,16 @@ function getRecipes(search) {
   xhr.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&beta=false&q=' + search.queryText + '&app_id=25ee5a1c&app_key=2e0d886c58ffcac239ddf7ae29b2d302' + search.ingredientsNumber + search.cuisineType + search.mealType + search.dishType);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status); // eslint-disable-line no-console
-    console.log(xhr.response); // eslint-disable-line no-console
-    $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50 hidden';
+    $searchResultsSpinner.className = 'search-results-spinner hidden';
     let searchId = 0;
     for (let i = 0; i < xhr.response.hits.length; i++) {
       $searchList.append(renderSearchResults(xhr.response.hits[i], searchId)); // eslint-disable-line
-      $emptySearchResults.className = 'empty-search-results flex-complete-center height-50 hidden';
-      $searchErrorMessage.className = 'search-error-message flex-complete-center height-30 hidden';
+      $emptySearchResults.className = 'empty-search-results hidden';
+      $searchErrorMessage.className = 'search-error-message hidden';
       searchId++;
     }
     if ($searchList.children.length < 1) {
-      $emptySearchResults.className = 'empty-search-results flex-complete-center height-30';
+      $emptySearchResults.className = 'empty-search-results flex-complete-center height-50';
     }
     searchData.push(xhr.response.hits);
   });
@@ -283,8 +279,8 @@ function getRecipes(search) {
   xhr.addEventListener('error', event => {
     if (event) {
       $searchErrorMessage.className = 'search-error-message flex-complete-center height-30';
-      $searchResultsSpinner.className = 'search-results-spinner flex-complete-center height-50 hidden';
-      $emptySearchResults.className = 'empty-search-results flex-complete-center height-30 hidden';
+      $searchResultsSpinner.className = 'search-results-spinner hidden';
+      $emptySearchResults.className = 'empty-search-results hidden';
     }
   });
 
@@ -381,7 +377,7 @@ $saveRecipe.addEventListener('click', function saveRecipe() {
   data.savedRecipes.push(newRecipe);
   data.nextSavedRecipeId++;
   $savedRecipesList.append(renderSavedRecipes(newRecipe)); // eslint-disable-line
-  $emptySavedRecipes.className = 'empty-saved-recipes flex-complete-center height-50 hidden';
+  $emptySavedRecipes.className = 'empty-saved-recipes hidden';
   $searchPage[0].className = 'container tab';
   $searchPage[2].className = 'container tab hidden';
 });
@@ -685,7 +681,7 @@ $createRecipe.addEventListener('submit', function inputCreateRecipe(event) {
     data.createdRecipes.unshift(createRecipe);
     $createRecipeImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     $createRecipe.reset();
-    $emptyCreatedRecipes.className = 'empty-created-recipes flex-complete-center height-50 hidden';
+    $emptyCreatedRecipes.className = 'empty-created-recipes hidden';
     recipeBookNav();
     window.scroll(0, 0);
   } else {

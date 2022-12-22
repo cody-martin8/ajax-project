@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://developer.edamam.com/attribution/badge.js"></script>
 </head>
 <body>
   <header>
@@ -71,7 +72,7 @@
 
           <!-- Empty list for search results -->
           <div class="row">
-            <div class="search-results-spinner flex-complete-center height-50 hidden">
+            <div class="search-results-spinner hidden">
               <div class="lds-spinner">
                 <div></div>
                 <div></div>
@@ -87,14 +88,14 @@
                 <div></div>
               </div>
             </div>
-            <div class="empty-search-results flex-complete-center height-30 hidden">
+            <div class="empty-search-results hidden">
               <div class="empty-list-wrapper">
                 <p class="empty-list-message">
                   No recipes matched your search parameters. Please check your filters and try searching again.
                 </p>
               </div>
             </div>
-            <div class="search-error-message flex-complete-center height-30 hidden">
+            <div class="search-error-message hidden">
               <div class="error-message-wrapper">
                 <p class="error-message">
                   There was an unexpected error during your search. Please check your internet connection and try again.
@@ -314,7 +315,7 @@
             <button type="button" class="saved-recipes-tab white-button margin-right">Saved Recipes</button>
             <button type="button" class="created-recipes-tab green-button">Created Recipes</button>
           </div>
-          <div class="saved-recipes-spinner flex-complete-center height-50 hidden">
+          <div class="saved-recipes-spinner hidden">
             <div class="lds-spinner">
               <div></div>
               <div></div>
@@ -330,14 +331,14 @@
               <div></div>
             </div>
           </div>
-          <div class="empty-saved-recipes flex-complete-center height-30 hidden">
+          <div class="empty-saved-recipes hidden">
             <div class="empty-list-wrapper">
               <p class="empty-list-message">
                 There are no saved recipes yet. You can find recipes by clicking the Search button above!
               </p>
             </div>
           </div>
-          <div class="saved-recipes-error-message flex-complete-center height-30 hidden">
+          <div class="saved-recipes-error-message hidden">
             <div class="error-message-wrapper">
               <p class="error-message">
                 There was an unexpected error while trying to retrieve your saved recipes. Please check your internet connection and refresh the page.
@@ -370,7 +371,7 @@
             <button type="button" class="saved-recipes-tab green-button margin-right">Saved Recipes</button>
             <button type="button" class="created-recipes-tab white-button">Created Recipes</button>
           </div>
-          <div class="empty-created-recipes flex-complete-center height-50 hidden">
+          <div class="empty-created-recipes hidden">
             <div class="empty-list-wrapper">
               <p class="empty-list-message">
                 It does not look like you have added any new recipes yet. You can add recipes by clicking the Create button above!
@@ -490,6 +491,9 @@
 
     </div>
   </main>
+  <footer>
+    <div id="edamam-badge" data-color="transparent"></div>
+  </footer>
   <script src="js/render.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

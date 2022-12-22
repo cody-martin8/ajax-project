@@ -32,6 +32,13 @@ input {
   font-family: "Noto Sans", sans-serif;
 }
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .container-header {
   background-color: rgb(118, 184, 95);
   padding-top: 1rem;
@@ -126,6 +133,7 @@ input:focus {
 }
 
 /* Loading Spinner */
+
 .height-50 {
   height: 50vh;
 }
