@@ -16,7 +16,7 @@ As someone who enjoys cooking at home and doesn't have the cabinet space for sto
 
 ## Live Demo
 
-Try the application live at [https://cody-martin8.github.io/ajax-project](https://cody-martin8.github.io/ajax-project)
+Try the application live at [https://cody-martin8.github.io/my-recipe-book](https://cody-martin8.github.io/my-recipe-book)
 
 ## Features
 
@@ -47,7 +47,7 @@ Try the application live at [https://cody-martin8.github.io/ajax-project](https:
 1. Clone the repository.
 
     ```shell
-    git clone https://github.com/cody-martin8/ajax-project
+    git clone https://github.com/cody-martin8/my-recipe-book
     ```
 
 1. Install all dependencies with NPM.
